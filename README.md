@@ -1,6 +1,6 @@
 # Arch Linux Install Scripts
 
-My modified ArchMatic scripts for a full Arch install & configuration with DE, support packages, and apps. Forked for VMWare optimization.
+Scripts for Arch install & configuration with DE, support packages, and apps. Includes VMWare drivers.
 
 ---
 
