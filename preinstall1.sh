@@ -51,7 +51,6 @@ mount /dev/sda4 /mnt/home
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup # backs up mirrorlist
 sudo pacman -Sy pacman-contrib --noconfirm --needed
-sudo pacman -S rankmirrors --noconfirm --needed
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 # install arch
@@ -66,29 +65,6 @@ echo "-------------------------------------------------"
 
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
-arch chroot /mnt # chroot
-
-# generate locales
-
-sudo pacman -S nano bash-completion --noconfirm --needed
-sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
-locale-gen
-echo LANG=en_US.UTF-8 > /etc/locale.conf
-export LANG=en_US.UTF-8
-
-# set timezone & link HW clock
-
-ln -S /usr/share/zoneinfo/America/Chicago > /etc/localtime
-hwclock --systohc --utc
-
-# set hostname
-
-echo archdesk > /etc/hostname
-
-# Enable TRIM
-
-systemctl enable fstrim.timer
-
 echo "-------------------------------------------------"
-echo "Create user accounts using commands in README, then proceed to 2nd installer."
+echo "Finished with install script 1. Please run [arch-chroot /mnt] and move on to 2nd installer."
 echo "-------------------------------------------------"

@@ -1,5 +1,26 @@
 #!/usr/bin/env bash
 
+# generate locales
+
+sudo pacman -S bash-completion --noconfirm --needed
+sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+locale-gen
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+export LANG=en_US.UTF-8
+
+# set timezone & link HW clock
+
+ln -S /usr/share/zoneinfo/America/Chicago > /etc/localtime
+hwclock --systohc --utc
+
+# set hostname
+
+echo archdesk > /etc/hostname
+
+# Enable TRIM
+
+systemctl enable fstrim.timer
+
 # mount efivars
 
 mount -t efivarfs efivarfs /sys/firmware/efi/efivars/
@@ -28,8 +49,5 @@ sudo systemctl enable NetworkManager.service
 
 
 echo "-------------------------------------------------"
-echo "Arch Linux Installed & Configured - Reboot & Proceed to setup scripts"
+echo "Arch Linux Installed & Configured. Please [exit] & run [umount -R /mnt] and reboot"
 echo "-------------------------------------------------"
-
-exit
-umount -R /mnt
