@@ -1,6 +1,6 @@
 # Arch Linux Install Scripts
 
-Scripts for Arch install & configuration with DE, support packages, and apps. Includes option to install VMWare drivers.
+Scripts for Arch install & configuration with DE, support packages, and apps.
 
 ---
 
@@ -64,7 +64,7 @@ cd ArchScripts
 sh setup.sh
 sh software.sh
 
-# Installing as VM guest
+# Installed as VM
 sh setup-vm.sh
 sh software.sh
 ```
