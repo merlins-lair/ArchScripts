@@ -18,12 +18,12 @@ echo "options root=PARTUUID=$(blkid -S PARTUUID -o value /dev/sda3) rw" >> /boot
 
 # install dhcpd service
 
-sudo pacman -S dhcpcd
+sudo pacman -S dhcpcd --noconfirm --needed
 sudo systemctl enable dhcpcd@ADAPTER.service # EDIT "ADAPTER" WITH YOUR ADAPTER IN IP LINK
 
 # install NetworkManager
 
-sudo pacman -S networkmanager
+sudo pacman -S networkmanager --noconfirm --needed
 sudo systemctl enable NetworkManager.service
 
 

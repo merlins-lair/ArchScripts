@@ -50,12 +50,13 @@ mount /dev/sda4 /mnt/home
 # set download mirrors
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup # backs up mirrorlist
-sudo pacman -Sy pacman-contrib
+sudo pacman -Sy pacman-contrib --noconfirm --needed
+sudo pacman -S rankmirrors --noconfirm --needed
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 # install arch
 
-pacstrap -K /mnt base linux linux-firmware base-devel
+pacstrap -K /mnt base linux linux-firmware base-devel --noconfirm --needed
 
 echo "-------------------------------------------------"
 echo "Arch Installed - Generating fstab and entering chroot"
@@ -69,7 +70,7 @@ arch chroot /mnt # chroot
 
 # generate locales
 
-sudo pacman -S nano bash-completion
+sudo pacman -S nano bash-completion --noconfirm --needed
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
