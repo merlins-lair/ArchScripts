@@ -8,7 +8,7 @@ Scripts for Arch install & configuration with DE, support packages, and apps. In
 
 This step installs Arch to your hard drive. *IT WILL FORMAT THE DISK*
 
-Boot into your Arch ISO
+Boot into your Arch ISO & run commands:
 
 ```bash
 # Installer 1
@@ -18,9 +18,9 @@ sh preinstall1.sh
 # Creating user account - Run commands below & replace "USERNAME" with your preferred username.
 arch-chroot /mnt
 
-passwd # This is your ROOT password
+passwd # Set your ROOT password
 useradd -m -g users -G wheel,storage,power -s /bin/bash USERNAME
-passwd USERNAME # This is your USER password
+passwd USERNAME # Set your USER password
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 echo "Defaults rootpw" >> /etc/sudoers
 
