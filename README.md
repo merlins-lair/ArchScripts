@@ -61,10 +61,10 @@ sudo git clone https://git.boppdev.net/beech/ArchScripts
 cd ArchScripts
 
 # Normal Install
-sh setup.sh
+sh setup.sh # GNOME install - use setup-kde.sh for plasma
 sh software.sh
 
-# Installed as VM
+# Installed as VM (GNOME only)
 sh setup-vm.sh
 sh software.sh
 ```
