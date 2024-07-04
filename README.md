@@ -33,7 +33,7 @@ nano preinstall2.sh
 # Edit adapter name for dhcpcd service in script
 sh preinstall2.sh
 exit
-umount -r /mnt
+umount -R /mnt
 ```
 
 ### After First Boot
