@@ -48,6 +48,9 @@ mount /dev/sda1 /mnt/boot
 mount /dev/sda4 /mnt/home
 
 # set download mirrors
+echo "-------------------------------------------------"
+echo "Setting Mirrorlist"
+echo "-------------------------------------------------"
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup # backs up mirrorlist
 sudo pacman -Sy pacman-contrib --noconfirm
@@ -66,5 +69,5 @@ echo "-------------------------------------------------"
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 echo "-------------------------------------------------"
-echo "Finished with install script 1. Please run [arch-chroot /mnt] and move on to 2nd installer."
+echo "Finished with install script 1. Please run [arch-chroot /mnt], create your user and move on to the 2nd installer."
 echo "-------------------------------------------------"

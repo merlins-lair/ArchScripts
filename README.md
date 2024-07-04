@@ -11,24 +11,29 @@ This step installs arch to your hard drive. *IT WILL FORMAT THE DISK*
 Boot into your Arch ISO
 
 ```bash
+# Installer 1
 curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/preinstall1.sh -o preinstall1.sh
 sh preinstall1.sh
 
+# Creating user account
 arch-chroot /mnt
 
 passwd
-useradd -M -g users -G wheel,storage,power -s /bin/bash USERNAME
+useradd -m -g users -G wheel,storage,power -s /bin/bash USERNAME
 passwd USERNAME
 sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 echo "Defaults rootpw" >> /etc/sudoers
 
-ip link # Take note of your link name & edit in preinstall2.
+ip link # Take note of your network adapter name (ex: ens33)
 
-# Run preinstall2.sh
+# Installer 2 Setup
 sudo pacman -S nano curl --noconfirm --needed
 curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/preinstall2.sh -o preinstall2.sh
+
+# Edit network adapter name for dhcpcd service in script line 43
 nano preinstall2.sh
-# Edit adapter name for dhcpcd service in script
+
+# Installer 2
 sh preinstall2.sh
 exit
 umount -R /mnt
