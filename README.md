@@ -42,8 +42,8 @@ umount -R /mnt
 ### After First Boot
 
 ```bash
-pacman -S --noconfirm pacman-contrib curl git
-git clone https://git.boppdev.net/beech/ArchScripts
+sudo pacman -S --noconfirm pacman-contrib curl git
+sudo git clone https://git.boppdev.net/beech/ArchScripts
 cd ArchScripts
 sh setup.sh # Comment out line 9 if you're not on a VM
 sh software.sh
