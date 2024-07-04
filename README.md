@@ -22,7 +22,7 @@ passwd # Set your ROOT password
 useradd -m -g users -G wheel,storage,power -s /bin/bash USERNAME
 passwd USERNAME # Set your USER password
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
-echo "Defaults rootpw" >> /etc/sudoers
+echo "Defaults rootpw" >> /etc/sudoers # Require root pass for sudo
 
 ip link # Take note of your network adapter name (ex: ens33)
 
