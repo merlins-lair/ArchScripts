@@ -1,16 +1,14 @@
-# ArchMatic Installer Script - VMWare
+# Arch Linux Install Scripts
 
 My modified ArchMatic scripts for a full Arch install & configuration with DE, support packages, and apps. Forked for VMWare optimization.
 
 ---
 
-## Setup Boot and Arch ISO on USB key
-
-First, setup the boot USB, boot arch live iso, and run the `preinstall.sh` from terminal. 
-
-### Arch Live ISO (Pre-Install)
+## Arch Live ISO (Pre-Install)
 
 This step installs arch to your hard drive. *IT WILL FORMAT THE DISK*
+
+Boot into your Arch ISO
 
 ```bash
 curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/preinstall1.sh -o preinstall1.sh
@@ -52,10 +50,5 @@ GDM Login Manager
 
 Booting using `systemd` 
 
-Installs the LTS Kernel along side the rolling one, and configures the bootloader to offer both as a choice during startup. This allows you to switch kernels in the event of a problem with the rolling one.
-
 ### Credits
-
-__[Credits to johnynfulleffect's fork of ArchMatic](https://github.com/johnynfulleffect/ArchMatic)__
-
-__[Credits to rickellis - ArchMatic](https://github.com/ChrisTitusTech/ArchMatic)__
+__[Credits to rickellis - ArchMatic for inspiration](https://github.com/ChrisTitusTech/ArchMatic)__
