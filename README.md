@@ -1,6 +1,6 @@
 # Arch Linux Install Scripts
 
-Scripts for Arch install & configuration with DE, support packages, and apps. Includes VMWare drivers.
+Scripts for Arch install & configuration with DE, support packages, and apps. Includes option to install VMWare drivers.
 
 ---
 
@@ -59,7 +59,13 @@ reboot # Remove installation media during reboot
 sudo pacman -S --noconfirm pacman-contrib curl git
 sudo git clone https://git.boppdev.net/beech/ArchScripts
 cd ArchScripts
-sh setup.sh # Comment out line 9, 65 & 66 if you're not on a VM
+
+# Normal Install
+sh setup.sh
+sh software.sh
+
+# Installing as VM guest
+sh setup-vm.sh
 sh software.sh
 ```
 

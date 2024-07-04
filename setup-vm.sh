@@ -5,6 +5,9 @@ echo
 
 PKGS=(
 
+    # --- VM Packages (Uncomment if not a VM guest)
+        'open-vm-tools'
+
     # --- XORG Display Rendering
         'xorg'                  # Base Package
         'xorg-drivers'          # Display Drivers 
@@ -58,6 +61,9 @@ for PKG in "${PKGS[@]}"; do
 done
 
 sudo systemctl enable gdm.service 
+
+sudo systemctl enable vmtoolsd.service
+sudo systemctl enable vmware-vmblock-fuse.service 
 
 echo
 echo "Done! Please Reboot & Run software.sh"
