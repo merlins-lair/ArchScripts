@@ -16,10 +16,10 @@ This step installs arch to your hard drive. *IT WILL FORMAT THE DISK*
 curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/preinstall1.sh -o preinstall1.sh
 sh preinstall1.sh
 
-arch chroot /mnt
+arch-chroot /mnt
 
 passwd
-useradd -M -g users -G wheel,storage,power -S /bin/bash USERNAME
+useradd -M -g users -G wheel,storage,power -s /bin/bash USERNAME
 passwd USERNAME
 sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 echo "Defaults rootpw" >> /etc/sudoers
@@ -27,7 +27,7 @@ echo "Defaults rootpw" >> /etc/sudoers
 ip link # Take note of your link name & edit in preinstall2.
 
 # Run preinstall2.sh
-sudo pacman -S curl --noconfirm --needed
+sudo pacman -S nano curl --noconfirm --needed
 curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/preinstall2.sh -o preinstall2.sh
 nano preinstall2.sh
 # Edit adapter name for dhcpcd service in script

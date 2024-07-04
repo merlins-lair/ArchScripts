@@ -10,7 +10,7 @@ export LANG=en_US.UTF-8
 
 # set timezone & link HW clock
 
-ln -S /usr/share/zoneinfo/America/Chicago > /etc/localtime
+ln -s /usr/share/zoneinfo/America/Chicago > /etc/localtime
 hwclock --systohc --utc
 
 # set hostname

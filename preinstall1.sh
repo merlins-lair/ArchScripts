@@ -50,7 +50,7 @@ mount /dev/sda4 /mnt/home
 # set download mirrors
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup # backs up mirrorlist
-sudo pacman -Sy pacman-contrib --noconfirm --needed
+sudo pacman -Sy pacman-contrib --noconfirm
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 # install arch
