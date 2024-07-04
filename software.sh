@@ -29,6 +29,7 @@ PKGS=(
     # GENERAL UTILITIES ---------------------------------------------------
 
     'dolphin'              # Filesystem browser
+    'vlc'                  # Video Player
 
     # DEVELOPMENT ---------------------------------------------------------
 

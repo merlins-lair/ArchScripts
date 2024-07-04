@@ -1,6 +1,6 @@
 # Arch Linux Install Scripts
 
-Scripts for Arch install & configuration with DE, support packages, and apps.
+Scripts for Arch install & configuration with GNOME or KDE Plasma, support packages, and apps.
 
 ---
 
@@ -70,8 +70,8 @@ sh software.sh
 ```
 
 ### System Description
-GNOME Desktop Enviornment
-GDM Login Manager
+GNOME or KDE Desktop Enviornment
+GDM or SDDM Login Manager
 
 Booting using `systemd` 
 
