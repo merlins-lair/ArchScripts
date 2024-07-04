@@ -4,9 +4,9 @@ Scripts for Arch install & configuration with DE, support packages, and apps. In
 
 ---
 
-## Arch Live ISO (Pre-Install)
+## Arch Live ISO
 
-This step installs arch to your hard drive. *IT WILL FORMAT THE DISK*
+This step installs Arch to your hard drive. *IT WILL FORMAT THE DISK*
 
 Boot into your Arch ISO
 
@@ -15,12 +15,12 @@ Boot into your Arch ISO
 curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/preinstall1.sh -o preinstall1.sh
 sh preinstall1.sh
 
-# Creating user account
+# Creating user account - Run commands below & replace "USERNAME" with your preferred username.
 arch-chroot /mnt
 
-passwd
+passwd # This is your ROOT password
 useradd -m -g users -G wheel,storage,power -s /bin/bash USERNAME
-passwd USERNAME
+passwd USERNAME # This is your USER password
 sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 echo "Defaults rootpw" >> /etc/sudoers
 
@@ -45,7 +45,7 @@ umount -R /mnt
 pacman -S --noconfirm pacman-contrib curl git
 git clone https://git.boppdev.net/beech/ArchScripts
 cd ArchScripts
-sh setup.sh
+sh setup.sh # Comment out line 9 if you're not on a VM
 sh software.sh
 ```
 
