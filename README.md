@@ -48,7 +48,7 @@ reboot # Remove installation media during reboot
 sudo pacman -S --noconfirm pacman-contrib curl git
 sudo git clone https://git.boppdev.net/beech/ArchScripts
 cd ArchScripts
-sh setup.sh # Comment out line 9 if you're not on a VM
+sh setup.sh # Comment out line 9, 65 & 66 if you're not on a VM
 sh software.sh
 ```
 

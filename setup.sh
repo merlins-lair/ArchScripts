@@ -5,7 +5,7 @@ echo
 
 PKGS=(
 
-    # --- VM Packages (Uncomment if not running in VM)
+    # --- VM Packages (Uncomment if not a VM guest)
         'open-vm-tools'
 
     # --- XORG Display Rendering
@@ -60,7 +60,10 @@ for PKG in "${PKGS[@]}"; do
     sudo pacman -S "$PKG" --noconfirm --needed
 done
 
-sudo systemctl enable gdm.service
+sudo systemctl enable gdm.service 
+
+sudo systemctl enable vmtoolsd.service # Comment out if VM guest
+sudo systemctl enable vmware-vmblock-fuse.service # Comment out if VM guest
 
 echo
 echo "Done! Please Reboot & Run software.sh"
