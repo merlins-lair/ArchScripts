@@ -44,6 +44,10 @@ reboot # Remove installation media during reboot
 # Preparing for first boot (Nvidia GPU)
 curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/nvidia.sh -o nvidia.sh
 sh nvidia.sh
+
+nano /boot/loader/entries/arch.conf
+nvidia-drm.modeset=1 # Add this to the last line (ex: rw nvidia-drm.modeset=1)
+
 exit
 umount -R /mnt
 reboot # Remove installation media during reboot
