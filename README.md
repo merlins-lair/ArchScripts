@@ -36,7 +36,14 @@ nano preinstall2.sh
 # Installer 2
 sh preinstall2.sh
 
-# Preparing for first boot
+# Preparing for first boot (Non-Nvidia GPU)
+exit
+umount -R /mnt
+reboot # Remove installation media during reboot
+
+# Preparing for first boot (Nvidia GPU)
+curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/nvidia.sh -o nvidia.sh
+sh nvidia.sh
 exit
 umount -R /mnt
 reboot # Remove installation media during reboot
