@@ -5,7 +5,7 @@ echo
 
 PKGS=(
 
-    # --- VM Packages
+    # --- VM Packages (Uncomment if not running in VM)
         'open-vm-tools'
 
     # --- XORG Display Rendering
