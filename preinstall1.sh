@@ -9,8 +9,8 @@ sgdisk -a 2048 -o /dev/sda # new gpt disk 2048 alignment
 
 # create partitions
 sgdisk -n 1:0:1024M /dev/sda # partition 1 (boot)
-sgdisk -n 2:0:4G /dev/sda # partition 2 (SWAP)
-sgdisk -n 3:0:35G /dev/sda # partition 3 (root)
+sgdisk -n 2:0:4G /dev/sda # partition 2 (SWAP - change to desired size)
+sgdisk -n 3:0:35G /dev/sda # partition 3 (root - change to desired size)
 sgdisk -n 4:0:0 /dev/sda # partition 4 (home, remaining space)
 
 # set partition types
@@ -62,7 +62,7 @@ rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 pacstrap -K /mnt base linux linux-firmware base-devel --noconfirm --needed
 
 echo "-------------------------------------------------"
-echo "Arch Installed - Generating fstab and entering chroot"
+echo "Installed - Generating fstab"
 echo "-------------------------------------------------"
 
 # generate fstab
@@ -70,5 +70,5 @@ echo "-------------------------------------------------"
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 echo "-------------------------------------------------"
-echo "Finished with install script 1. Please run [arch-chroot /mnt], create your user and move on to the 2nd installer."
+echo "Finished install script 1. Please run [arch-chroot /mnt], create your user and move on to the 2nd installer."
 echo "-------------------------------------------------"
