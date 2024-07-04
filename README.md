@@ -35,8 +35,11 @@ nano preinstall2.sh
 
 # Installer 2
 sh preinstall2.sh
+
+# Preparing for first boot
 exit
 umount -R /mnt
+reboot # Remove installation media during reboot
 ```
 
 ### After First Boot
