@@ -46,7 +46,7 @@ curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/nvidia.sh -o nvid
 sh nvidia.sh
 
 nano /boot/loader/entries/arch.conf
-nvidia-drm.modeset=1 # Add this to the last line (ex: rw nvidia-drm.modeset=1)
+nvidia-drm.modeset=1 # Add this to the end of the last line (ex: rw nvidia-drm.modeset=1)
 
 exit
 umount -R /mnt

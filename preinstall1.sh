@@ -58,6 +58,9 @@ sudo pacman -S pacman-contrib --noconfirm
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 # install arch
+echo "-------------------------------------------------"
+echo "Installing to drive"
+echo "-------------------------------------------------"
 
 pacstrap -K /mnt base linux linux-firmware base-devel --noconfirm --needed
 
