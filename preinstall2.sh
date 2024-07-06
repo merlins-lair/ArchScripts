@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Create your user account following the README instructions before running this.
+# Edit hostname on line 21 if desired
 
 # generate locales
 
@@ -15,7 +16,7 @@ export LANG=en_US.UTF-8
 ln -s /usr/share/zoneinfo/America/Chicago > /etc/localtime
 hwclock --systohc --utc
 
-# set hostname
+# set hostname - edit archdesk with preferred hostname
 
 echo archdesk > /etc/hostname
 
