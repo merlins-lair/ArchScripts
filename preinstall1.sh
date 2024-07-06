@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# This WILL format and partition 1 drive in your system. It is recommended to run the script with only 1 drive installed.
+# Selected drive is /dev/sda, replace sda with specified drive if you have multiple. List drives with 'lsblk'
+# Change boot, SWAP, and root partition sizes to your needs in lines 15-17
+
 echo "-------------------------------------------------"
 echo "Setting up partitions - DRIVE WILL BE WIPED"
 echo "-------------------------------------------------"

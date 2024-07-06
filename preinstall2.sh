@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Create your user account following the README instructions before running this.
+
 # generate locales
 
 sudo pacman -S bash-completion --noconfirm --needed
