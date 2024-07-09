@@ -56,21 +56,28 @@ reboot # Remove installation media during reboot
 ### After First Boot
 
 ```bash
-sudo pacman -S --noconfirm pacman-contrib curl git
+sudo pacman -S --noconfirm pacman-contrib git
 sudo git clone https://git.boppdev.net/beech/ArchScripts
 cd ArchScripts
 
 # Normal Install
-sh setup.sh # GNOME install - use setup-kde.sh for plasma
+sh setup-gome.sh # GNOME install
+OR
+sh setup-kde.sh # KDE install
+
 sh software.sh
 
-# Installed as VM (GNOME only)
-sh setup-vm.sh
+# Installed as VM
+sh setup-vmgnome.sh # GNOME install (VM)
+OR
+sh setup-vmkde.sh # KDE install (VM)
+
 sh software.sh
 ```
 
 ### System Description
 GNOME or KDE Desktop Enviornment
+
 GDM or SDDM Login Manager
 
 Booting using `systemd` 
