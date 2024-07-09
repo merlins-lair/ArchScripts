@@ -65,6 +65,8 @@ sh setup-gome.sh # GNOME install
 OR
 sh setup-kde.sh # KDE install
 
+reboot
+
 sh software.sh
 ```
 
@@ -102,6 +104,8 @@ monitor.alsa.rules = [
 
 # Restart Pipewire
 systemctl --user restart wireplumber pipewire pipewire-pulse
+
+reboot
 
 sh software.sh
 ```
