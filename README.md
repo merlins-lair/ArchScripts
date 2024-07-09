@@ -73,6 +73,10 @@ sh software.sh
 ### After First Boot (VM)
 
 ```bash
+sudo pacman -S --noconfirm pacman-contrib git
+sudo git clone https://git.boppdev.net/beech/ArchScripts
+cd ArchScripts
+
 # Installed as VM
 sh setup-vmgnome.sh # GNOME install (VM)
 OR
