@@ -41,10 +41,14 @@ PKGS=(
     # --- Audio
         'alsa-utils'        # Advanced Linux Sound Architecture (ALSA) Components https://alsa.opensrc.org/
         'alsa-plugins'      # ALSA plugins
-        'pulseaudio'        # Pulse Audio sound components
-        'pulseaudio-alsa'   # ALSA configuration for pulse audio
-        'pavucontrol'       # Pulse Audio volume control
         'pnmixer'           # System tray volume control
+        'pipewire'
+        'pipewire-pulse'
+        'pipewire-audio'
+        'pipewire-alsa'
+        'pipewire-jack'
+        'wireplumber'
+        'rtkit'
 
     # --- Bluetooth
         'bluez'                 # Daemons for the bluetooth protocol stack
@@ -63,8 +67,9 @@ done
 sudo systemctl enable gdm.service 
 
 sudo systemctl enable vmtoolsd.service
-sudo systemctl enable vmware-vmblock-fuse.service 
+sudo systemctl enable vmware-vmblock-fuse.service
+cp /usr/share/pipewire/pipewire.conf /etc/pipewire/
 
 echo
-echo "Done! Please Reboot & Run software.sh"
+echo "Done! Please Reboot & Run software.sh. View wiki for VM audio fix."
 echo
