@@ -66,11 +66,41 @@ OR
 sh setup-kde.sh # KDE install
 
 sh software.sh
+```
 
+### After First Boot (VM)
+
+```bash
 # Installed as VM
 sh setup-vmgnome.sh # GNOME install (VM)
 OR
 sh setup-vmkde.sh # KDE install (VM)
+
+# Audio Fix for VMs
+cd ~/.config/wireplumber/wireplumber.conf.d
+nano 50-alsa-config.conf
+
+# Add the following lines:
+monitor.alsa.rules = [
+  {
+    matches = [
+      # This matches the value of the 'node.name' property of the node.
+      {
+        node.name = "~alsa_output.*"
+      }
+    ]
+    actions = {
+      # Apply all the desired node specific settings here.
+      update-props = {
+        api.alsa.period-size   = 1024
+        api.alsa.headroom      = 8192
+      }
+    }
+  }
+]
+
+# Restart Pipewire
+systemctl --user restart wireplumber pipewire pipewire-pulse
 
 sh software.sh
 ```
