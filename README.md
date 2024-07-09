@@ -77,6 +77,7 @@ OR
 sh setup-vmkde.sh # KDE install (VM)
 
 # Audio Fix for VMs
+mkdir -p ~/.config/wireplumber/wireplumber.conf.d/
 cd ~/.config/wireplumber/wireplumber.conf.d
 nano 50-alsa-config.conf
 
