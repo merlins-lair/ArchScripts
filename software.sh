@@ -8,9 +8,7 @@ PKGS=(
     # TERMINAL UTILITIES --------------------------------------------------
 
     'curl'                    # Remote content retrieval
-    'file-roller'              # Archive utility
     'gufw'                    # Firewall manager
-    'hardinfo'                # Hardware info app
     'neofetch'                # Shows system info when you launch terminal
     'numlockx'                # Turns on numlock in X11
     'p7zip'                   # 7z compression program
