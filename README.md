@@ -15,16 +15,24 @@ Boot into your Arch ISO & run commands:
 curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/preinstall1.sh -o preinstall1.sh
 sh preinstall1.sh
 
-# Creating user account - Run commands below & replace "USERNAME" with your preferred username.
+# Enter Arch root directory
 arch-chroot /mnt
 
-passwd # Set your ROOT password
-useradd -m -g users -G wheel,storage,power -s /bin/bash USERNAME
-passwd USERNAME # Set your USER password
-sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
-echo "Defaults rootpw" >> /etc/sudoers # Require root pass for sudo
+# Set your root password
+passwd
 
-ip link # Take note of your network adapter name (ex: ens33)
+# Create your user account, replace USERNAME with your desired username
+useradd -m -g users -G wheel,storage,power -s /bin/bash USERNAME
+
+# Set the password for your account, replace USERNAME with the user you created
+passwd USERNAME # Set your USER password
+
+# File edits for permissions
+sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
+echo "Defaults rootpw" >> /etc/sudoers 
+
+# Run this & take note of your network adapter name (ex: ens33)
+ip link 
 
 # Installer 2 Setup
 sudo pacman -S nano curl --noconfirm --needed
@@ -39,18 +47,21 @@ sh preinstall2.sh
 # Preparing for first boot (Non-Nvidia GPU)
 exit
 umount -R /mnt
-reboot # Remove installation media during reboot
 
 # Preparing for first boot (Nvidia GPU)
 curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/nvidia.sh -o nvidia.sh
 sh nvidia.sh
 
 nano /boot/loader/entries/arch.conf
-nvidia-drm.modeset=1 # Add this to the end of the last line (ex: rw nvidia-drm.modeset=1)
+
+# Add this to the end of the last line (ex: rw nvidia-drm.modeset=1) & save
+nvidia-drm.modeset=1 
 
 exit
 umount -R /mnt
-reboot # Remove installation media during reboot
+
+# Reboot Machine (remove installation media during reboot)
+reboot
 ```
 
 ### After First Boot
