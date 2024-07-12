@@ -106,9 +106,7 @@ monitor.alsa.rules = [
   }
 ]
 
-# Restart Pipewire
-systemctl --user restart wireplumber pipewire pipewire-pulse
-
+# Reboot Machine
 reboot
 
 sh software.sh
