@@ -68,7 +68,7 @@ sudo git clone https://git.boppdev.net/beech/ArchScripts
 cd ArchScripts
 
 # Normal Install
-sh setup-gome.sh # GNOME install
+sh setup-gnome.sh # GNOME install
 OR
 sh setup-kde.sh # KDE install
 
