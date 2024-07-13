@@ -40,7 +40,7 @@ nano preinstall2.sh
 # Installer 2
 sh preinstall2.sh
 
-# Preparing for first boot (Non-Nvidia GPU)
+# Preparing for first boot (Non-Nvidia GPU or VM)
 exit
 umount -R /mnt
 
