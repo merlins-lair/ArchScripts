@@ -25,7 +25,7 @@ passwd
 useradd -m -g users -G wheel,storage,power -s /bin/bash USERNAME
 
 # Set the password for your account, replace USERNAME with the user you created
-passwd USERNAME # Set your USER password
+passwd USERNAME
 
 # Run this & take note of your network adapter name (ex: ens33)
 ip link 
