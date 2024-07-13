@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
 # Create your user account following the README instructions before running this.
-# Edit hostname on line 21 if desired
+# Edit hostname on line 26 if desired
+
+# File edits for user permissions
+
+sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
+echo "Defaults rootpw" >> /etc/sudoers
 
 # generate locales
 
