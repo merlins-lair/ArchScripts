@@ -44,14 +44,8 @@ sh preinstall2.sh
 exit
 umount -R /mnt
 
-# Preparing for first boot (Nvidia GPU)
-curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/nvidia.sh -o nvidia.sh
-sh nvidia.sh
-
-nano /boot/loader/entries/arch.conf
-
-# Add this to the end of the last line (ex: rw nvidia-drm.modeset=1) & save
-nvidia-drm.modeset=1 
+# Preparing for first boot (Nvidia GPU) - Follow linked instructions:
+https://github.com/korvahannu/arch-nvidia-drivers-installation-guide
 
 exit
 umount -R /mnt
