@@ -118,7 +118,5 @@ GNOME or KDE Desktop Enviornment
 
 GDM or SDDM Login Manager
 
-Booting using `systemd` 
-
 ### Credits
-__[Credits to rickellis - ArchMatic for inspiration](https://github.com/ChrisTitusTech/ArchMatic)__
+__[Inspired by ArchTitus](https://github.com/ChrisTitusTech/ArchTitus)__
