@@ -15,19 +15,19 @@ PKGS=(
     'unrar'                   # RAR compression program
     'unzip'                   # Zip compression program
     'wget'                    # Remote content retrieval
-    'konsole'                 # Terminal emulator
     'vim'                     # Terminal Editor
     'zenity'                  # Display graphical dialog boxes via shell scripts
     'zip'                     # Zip compression program
-    'zsh'                     # Interactive shell
-    'zsh-autosuggestions'     # Zsh Plugin
-    'zsh-syntax-highlighting' # Zsh Plugin
     'nano'                    # Simpler Terminal Editor
 
     # GENERAL UTILITIES ---------------------------------------------------
 
-    'dolphin'              # Filesystem browser
     'vlc'                  # Video Player
+    'lutris'               # Gaming
+    'wine'                 # Gaming
+    'spotify'              # Music
+    'obs-studio'           # Screen Recording
+    'remmina'              # RDP
 
     # DEVELOPMENT ---------------------------------------------------------
 
@@ -38,6 +38,8 @@ PKGS=(
     'npm'                   # Node package manager
     'python'                # Scripting language
     'yarn'                  # Dependency management (Hyper needs this)
+    'gimp'                  # Photo Editor
+    'kdenlive'              # Video Editor
 
     # PRODUCTIVITY --------------------------------------------------------
 
