@@ -12,7 +12,7 @@ Boot into your Arch ISO & run commands:
 
 ```bash
 # Installer 1
-curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/preinstall1.sh -o preinstall1.sh
+curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/preinstall1.sh -o preinstall1.sh
 sh preinstall1.sh
 
 # Enter Arch root directory
@@ -32,7 +32,7 @@ ip link
 
 # Installer 2 Setup
 sudo pacman -S nano curl --noconfirm --needed
-curl https://git.boppdev.net/beech/ArchScripts/raw/branch/main/preinstall2.sh -o preinstall2.sh
+curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/preinstall2.sh -o preinstall2.sh
 
 # Edit network adapter name for dhcpcd service in script line 43
 nano preinstall2.sh
@@ -58,7 +58,7 @@ reboot
 
 ```bash
 sudo pacman -S --noconfirm pacman-contrib git
-sudo git clone https://git.boppdev.net/beech/ArchScripts
+sudo git clone https://git.merlinslair.net/beech/ArchScripts
 cd ArchScripts
 
 # Normal Install
@@ -75,7 +75,7 @@ sh software.sh
 
 ```bash
 sudo pacman -S --noconfirm pacman-contrib git
-sudo git clone https://git.boppdev.net/beech/ArchScripts
+sudo git clone https://git.merlinslair.net/beech/ArchScripts
 cd ArchScripts
 
 # Installed as VM
