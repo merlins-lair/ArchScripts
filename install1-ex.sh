@@ -38,22 +38,22 @@ echo "-------------------------------------------------"
 echo "Creating Filesystems"
 echo "-------------------------------------------------"
 
-mkfs.fat -F32 $(Diskname)1 # FAT32 boot partition
-mkswap $(Diskname)2 # create SWAP
-swapon $(Diskname)2 # enable SWAP
-mkfs.ext4 $(Diskname)3
-mkfs.ext4 $(Diskname)4
+mkfs.fat -F32 "$(Diskname)1" # FAT32 boot partition
+mkswap "$(Diskname)2" # create SWAP
+swapon "$(Diskname)2" # enable SWAP
+mkfs.ext4 "$(Diskname)3"
+mkfs.ext4 "$(Diskname)4"
 
 # mount partitions
 echo "-------------------------------------------------"
 echo "Mounting Partitions"
 echo "-------------------------------------------------"
 
-mount $(Diskname)3 /mnt
+mount "$(Diskname)3" /mnt
 mkdir /mnt/boot
 mkdir /mnt/home
-mount $(Diskname)1 /mnt/boot
-mount $(Diskname)4 /mnt/home
+mount "$(Diskname)1" /mnt/boot
+mount "$(Diskname)4" /mnt/home
 
 # set download mirrors
 echo "-------------------------------------------------"
