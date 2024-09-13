@@ -5,7 +5,7 @@
 
 echo "Specify drive name that you entered in the first script."
 
-read Diskname
+read DISK
 
 echo "Create a root password (not your user password)."
 
@@ -61,7 +61,7 @@ echo "title Arch" > /boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 
-echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $(Diskname)3) rw" >> /boot/loader/entries/arch.conf
+echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $(DISK)3) rw" >> /boot/loader/entries/arch.conf
 
 # install NetworkManager
 

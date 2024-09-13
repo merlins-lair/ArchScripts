@@ -9,51 +9,51 @@ echo "-------------------------------------------------"
 
 echo "Specify drive name for install(ex. /dev/sda, /dev/nvme0n1). THIS WILL FORMAT & PARTITION THE SPECIFIED DRIVE!"
 
-read Diskname
+read DISK
 
 echo -e "\nFormatting disk...\n$HR"
 
 # disk prep
-sgdisk -Z $(Diskname) # zap all on disk
-sgdisk -a 2048 -o $(Diskname) # new gpt disk 2048 alignment
+sgdisk -Z $(DISK) # zap all on disk
+sgdisk -a 2048 -o $(DISK) # new gpt disk 2048 alignment
 
 # create partitions
-sgdisk -n 1:0:1024M $(Diskname) # partition 1 (boot)
-sgdisk -n 2:0:4G $(Diskname) # partition 2 (SWAP - change to desired size)
-sgdisk -n 3:0:35G $(Diskname) # partition 3 (root - change to desired size)
-sgdisk -n 4:0:0 $(Diskname) # partition 4 (home, remaining space)
+sgdisk -n 1:0:1024M $(DISK) # partition 1 (boot)
+sgdisk -n 2:0:4G $(DISK) # partition 2 (SWAP - change to desired size)
+sgdisk -n 3:0:35G $(DISK) # partition 3 (root - change to desired size)
+sgdisk -n 4:0:0 $(DISK) # partition 4 (home, remaining space)
 
 # set partition types
-sgdisk -t 1:ef00 $(Diskname)
-sgdisk -t 2:8200 $(Diskname)
-sgdisk -t 3:8300 $(Diskname)
-sgdisk -t 4:8300 $(Diskname)
+sgdisk -t 1:ef00 $(DISK)
+sgdisk -t 2:8200 $(DISK)
+sgdisk -t 3:8300 $(DISK)
+sgdisk -t 4:8300 $(DISK)
 
 # label partitions
-sgdisk -c 1:"boot" $(Diskname)
-sgdisk -c 2:"swap" $(Diskname)
-sgdisk -c 3:"root" $(Diskname)
-sgdisk -c 4:"home" $(Diskname)
+sgdisk -c 1:"boot" $(DISK)
+sgdisk -c 2:"swap" $(DISK)
+sgdisk -c 3:"root" $(DISK)
+sgdisk -c 4:"home" $(DISK)
 
 # make filesystems
 echo -e "\nCreating Filesystems...\n$HR"
 
-mkfs.fat -F32 "$(Diskname)1" # FAT32 boot partition
-mkswap "$(Diskname)2" # create SWAP
-swapon "$(Diskname)2" # enable SWAP
-mkfs.ext4 "$(Diskname)3"
-mkfs.ext4 "$(Diskname)4"
+mkfs.fat -F32 "$(DISK)1" # FAT32 boot partition
+mkswap "$(DISK)2" # create SWAP
+swapon "$(DISK)2" # enable SWAP
+mkfs.ext4 "$(DISK)3"
+mkfs.ext4 "$(DISK)4"
 
 # mount partitions
 echo "-------------------------------------------------"
 echo "Mounting Partitions"
 echo "-------------------------------------------------"
 
-mount "$(Diskname)3" /mnt
+mount "$(DISK)3" /mnt
 mkdir /mnt/boot
 mkdir /mnt/home
-mount "$(Diskname)1" /mnt/boot
-mount "$(Diskname)4" /mnt/home
+mount "$(DISK)1" /mnt/boot
+mount "$(DISK)4" /mnt/home
 
 # set download mirrors
 echo "-------------------------------------------------"
