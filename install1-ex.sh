@@ -11,6 +11,8 @@ echo "Specify drive name for install(ex. /dev/sda, /dev/nvme0n1). THIS WILL FORM
 
 read Diskname
 
+pacman -S --noconfirm gptfdisk
+
 # disk prep
 sgdisk -Z $Diskname # zap all on disk
 sgdisk -a 2048 -o $Diskname # new gpt disk 2048 alignment
