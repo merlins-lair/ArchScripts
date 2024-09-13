@@ -9,7 +9,7 @@ echo "-------------------------------------------------"
 
 echo "Specify drive name for install(ex. /dev/sda, /dev/nvme0n1). THIS WILL FORMAT & PARTITION THE SPECIFIED DRIVE!"
 
-read -p "Enter disk name: " Diskname
+read Diskname
 
 # disk prep
 sgdisk -Z $Diskname # zap all on disk
