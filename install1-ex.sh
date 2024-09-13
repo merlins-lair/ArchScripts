@@ -19,31 +19,31 @@ echo "-------------------------------------------------"
 
 echo "Specify drive name for install(ex. /dev/sda, /dev/nvme0n1). THIS WILL FORMAT & PARTITION THE SPECIFIED DRIVE!"
 
-read DISK
+read -r DISK
 
 echo -e "\nFormatting disk...\n$HR"
 
 # disk prep
-sgdisk -Z $(DISK) # zap all on disk
-sgdisk -a 2048 -o $(DISK) # new gpt disk 2048 alignment
+sgdisk -Z $DISK # zap all on disk
+sgdisk -a 2048 -o $DISK  # new gpt disk 2048 alignment
 
 # create partitions
-sgdisk -n 1:0:1024M $(DISK) # partition 1 (boot)
-sgdisk -n 2:0:4G $(DISK) # partition 2 (SWAP - change to desired size)
-sgdisk -n 3:0:35G $(DISK) # partition 3 (root - change to desired size)
-sgdisk -n 4:0:0 $(DISK) # partition 4 (home, remaining space)
+sgdisk -n 1:0:1024M $DISK  # partition 1 (boot)
+sgdisk -n 2:0:4G $DISK  # partition 2 (SWAP - change to desired size)
+sgdisk -n 3:0:35G $DISK # partition 3 (root - change to desired size)
+sgdisk -n 4:0:0 $DISK # partition 4 (home, remaining space)
 
 # set partition types
-sgdisk -t 1:ef00 $(DISK)
-sgdisk -t 2:8200 $(DISK)
-sgdisk -t 3:8300 $(DISK)
-sgdisk -t 4:8300 $(DISK)
+sgdisk -t 1:ef00 $DISK 
+sgdisk -t 2:8200 $DISK 
+sgdisk -t 3:8300 $DISK 
+sgdisk -t 4:8300 $DISK 
 
 # label partitions
-sgdisk -c 1:"boot" $(DISK)
-sgdisk -c 2:"swap" $(DISK)
-sgdisk -c 3:"root" $(DISK)
-sgdisk -c 4:"home" $(DISK)
+sgdisk -c 1:"boot" $DISK 
+sgdisk -c 2:"swap" $DISK 
+sgdisk -c 3:"root" $DISK 
+sgdisk -c 4:"home" $DISK 
 
 # make filesystems
 echo -e "\nCreating Filesystems...\n$HR"
