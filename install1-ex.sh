@@ -38,11 +38,11 @@ sgdisk -c 4:"home" $(Diskname)
 # make filesystems
 echo -e "\nCreating Filesystems...\n$HR"
 
-mkfs.fat -F32 -n "$(Diskname)1" # FAT32 boot partition
+mkfs.fat -F32 "$(Diskname)1" # FAT32 boot partition
 mkswap "$(Diskname)2" # create SWAP
 swapon "$(Diskname)2" # enable SWAP
-mkfs.ext4 -L "$(Diskname)3"
-mkfs.ext4 -L "$(Diskname)4"
+mkfs.ext4 "$(Diskname)3"
+mkfs.ext4 "$(Diskname)4"
 
 # mount partitions
 echo "-------------------------------------------------"
