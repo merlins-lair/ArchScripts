@@ -11,40 +11,38 @@ echo "Specify drive name for install(ex. /dev/sda, /dev/nvme0n1). THIS WILL FORM
 
 read Diskname
 
-pacman -S --noconfirm gptfdisk
+echo -e "\nFormatting disk...\n$HR"
 
 # disk prep
-sgdisk -Z $Diskname # zap all on disk
-sgdisk -a 2048 -o $Diskname # new gpt disk 2048 alignment
+sgdisk -Z $(Diskname) # zap all on disk
+sgdisk -a 2048 -o $(Diskname) # new gpt disk 2048 alignment
 
 # create partitions
-sgdisk -n 1:0:1024M $Diskname # partition 1 (boot)
-sgdisk -n 2:0:4G $Diskname # partition 2 (SWAP - change to desired size)
-sgdisk -n 3:0:35G $Diskname # partition 3 (root - change to desired size)
-sgdisk -n 4:0:0 $Diskname # partition 4 (home, remaining space)
+sgdisk -n 1:0:1024M $(Diskname) # partition 1 (boot)
+sgdisk -n 2:0:4G $(Diskname) # partition 2 (SWAP - change to desired size)
+sgdisk -n 3:0:35G $(Diskname) # partition 3 (root - change to desired size)
+sgdisk -n 4:0:0 $(Diskname) # partition 4 (home, remaining space)
 
 # set partition types
-sgdisk -t 1:ef00 $Diskname
-sgdisk -t 2:8200 $Diskname
-sgdisk -t 3:8300 $Diskname
-sgdisk -t 4:8300 $Diskname
+sgdisk -t 1:ef00 $(Diskname)
+sgdisk -t 2:8200 $(Diskname)
+sgdisk -t 3:8300 $(Diskname)
+sgdisk -t 4:8300 $(Diskname)
 
 # label partitions
-sgdisk -c 1:"boot" $Diskname
-sgdisk -c 2:"swap" $Diskname
-sgdisk -c 3:"root" $Diskname
-sgdisk -c 4:"home" $Diskname
+sgdisk -c 1:"boot" $(Diskname)
+sgdisk -c 2:"swap" $(Diskname)
+sgdisk -c 3:"root" $(Diskname)
+sgdisk -c 4:"home" $(Diskname)
 
 # make filesystems
-echo "-------------------------------------------------"
-echo "Creating Filesystems"
-echo "-------------------------------------------------"
+echo -e "\nCreating Filesystems...\n$HR"
 
-mkfs.fat -F32 "$(Diskname)1" # FAT32 boot partition
+mkfs.fat -F32 -n "$(Diskname)1" # FAT32 boot partition
 mkswap "$(Diskname)2" # create SWAP
 swapon "$(Diskname)2" # enable SWAP
-mkfs.ext4 "$(Diskname)3"
-mkfs.ext4 "$(Diskname)4"
+mkfs.ext4 -L "$(Diskname)3"
+mkfs.ext4 -L "$(Diskname)4"
 
 # mount partitions
 echo "-------------------------------------------------"
