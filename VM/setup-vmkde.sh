@@ -69,6 +69,8 @@ sudo systemctl enable sddm.service
 sudo systemctl enable vmtoolsd.service
 sudo systemctl enable vmware-vmblock-fuse.service 
 cp /usr/share/pipewire/pipewire.conf /etc/pipewire/
+mkdir -p ~/.config/wireplumber/wireplumber.conf.d/
+cp ~/ArchScripts/VM/50-alsa-config.conf ~/.config/wireplumber/wireplumber.conf.d/50-alsa-config.conf
 
 echo
 echo "Done! Please Reboot & Run software.sh. View wiki for VM audio fix."

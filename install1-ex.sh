@@ -81,10 +81,10 @@ echo "-------------------------------------------------"
 
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
+echo "-------------------------------------------------"
+echo "Finished install script 1. Run install2.sh"
+echo "-------------------------------------------------"
+
 # chroot
 arch-chroot /mnt
-curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/experimental/install2-ex.sh -o install2.sh
 
-echo "-------------------------------------------------"
-echo "Finished install script 1. Please run install2.sh"
-echo "-------------------------------------------------"

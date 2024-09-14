@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Create your user account following the README instructions before running this.
-# Edit hostname on line 26 if desired
-
 lsblk
 echo "Specify drive name that you entered in the first script."
 

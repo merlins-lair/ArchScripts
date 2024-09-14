@@ -15,9 +15,6 @@ Boot into your Arch ISO & run commands:
 curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/install1.sh -o install1.sh
 sh install1.sh
 
-# Enter Arch root directory
-arch-chroot /mnt
-
 # Installer 2
 curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/install2.sh -o install2.sh
 sh preinstall2.sh
@@ -42,44 +39,10 @@ reboot
 sudo pacman -S --noconfirm pacman-contrib
 sudo git clone https://git.merlinslair.net/beech/ArchScripts
 cd ArchScripts
-chmod +x install3.sh
 sh install3.sh
 
 reboot
 ```
-
-# Audio Fix for VMs
-```bash
-mkdir -p ~/.config/wireplumber/wireplumber.conf.d/
-
-cd ~/.config/wireplumber/wireplumber.conf.d
-
-nano 50-alsa-config.conf
-```
-
-Add the following lines:
-
-```bash
-monitor.alsa.rules = [
-  {
-    matches = [
-      # This matches the value of the 'node.name' property of the node.
-      {
-        node.name = "~alsa_output.*"
-      }
-    ]
-    actions = {
-      # Apply all the desired node specific settings here.
-      update-props = {
-        api.alsa.period-size   = 1024
-        api.alsa.headroom      = 8192
-      }
-    }
-  }
-]
-```
-
-Reboot Machine
 
 ### System Description
 GNOME or KDE Desktop Environment 
