@@ -3,16 +3,6 @@
 # Selected drive is /dev/sda, replace sda with specified drive if you have multiple. List drives with 'lsblk'
 # Change boot, SWAP, and root partition sizes to your needs in lines 15-17
 
-# set download mirrors
-echo "-------------------------------------------------"
-echo "Setting Mirrorlist"
-echo "-------------------------------------------------"
-
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup # backs up mirrorlist
-sudo pacman -Syyy
-sudo pacman -S pacman-contrib --noconfirm
-rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
-
 echo "-------------------------------------------------"
 echo "Arch Install Script 1 - Drive Setup"
 echo "-------------------------------------------------"
@@ -65,6 +55,16 @@ mkdir /mnt/boot
 mkdir /mnt/home
 mount ${DISK}1 /mnt/boot
 mount ${DISK}4 /mnt/home
+
+# set download mirrors
+echo "-------------------------------------------------"
+echo "Setting Mirrorlist"
+echo "-------------------------------------------------"
+
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup # backs up mirrorlist
+sudo pacman -Syyy
+sudo pacman -S pacman-contrib --noconfirm
+rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 # install arch
 echo "-------------------------------------------------"
