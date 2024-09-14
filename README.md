@@ -49,11 +49,17 @@ reboot
 ```
 
 # Audio Fix for VMs
+```bash
 mkdir -p ~/.config/wireplumber/wireplumber.conf.d/
-cd ~/.config/wireplumber/wireplumber.conf.d
-nano 50-alsa-config.conf
 
-# Add the following lines:
+cd ~/.config/wireplumber/wireplumber.conf.d
+
+nano 50-alsa-config.conf
+```
+
+Add the following lines:
+
+```bash
 monitor.alsa.rules = [
   {
     matches = [
@@ -71,12 +77,9 @@ monitor.alsa.rules = [
     }
   }
 ]
-
-# Reboot Machine
-reboot
-
-sh software.sh
 ```
+
+Reboot Machine
 
 ### System Description
 GNOME or KDE Desktop Environment 
