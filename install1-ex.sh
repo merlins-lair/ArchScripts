@@ -49,7 +49,6 @@ sgdisk -c 4:"home" $DISK
 echo -e "\nCreating Filesystems...\n$HR"
 
 parted $DISK mklabel gpt
-
 mkfs.fat -F32 "$(DISK)1" # FAT32 boot partition
 mkswap "$(DISK)2" # create SWAP
 swapon "$(DISK)2" # enable SWAP
@@ -61,6 +60,7 @@ echo "-------------------------------------------------"
 echo "Mounting Partitions"
 echo "-------------------------------------------------"
 
+parted $DISK mklabel gpt
 mount "$(DISK)3" /mnt
 mkdir /mnt/boot
 mkdir /mnt/home
