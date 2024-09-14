@@ -71,8 +71,7 @@ echo "options root=PARTUUID=$(blkid -s PARTUUID -o value ${DISK}3) rw" >> /boot/
 # install NetworkManager
 
 sudo pacman -S networkmanager --noconfirm --needed
-sudo systemctl disable dhcpcd.ervice
-sudo systemctl stop dhcpcd.service
+sudo pacman -S git --noconfirm --needed
 sudo systemctl enable NetworkManager.service
 sudo systemctl start NetworkManager.service
 
