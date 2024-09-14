@@ -1,7 +1,23 @@
 #!/usr/bin/env bash
 
-# Create your user account following the README instructions before running this.
-# Edit hostname on line 26 if desired
+lsblk
+echo "Specify drive name that you entered in the first script."
+
+read -r -p "Enter the disk: " DISK
+
+echo "Create a root password (not your user password)."
+
+passwd
+
+echo "Create a user account."
+
+read -r -p "Create username: " Username
+
+useradd -m -g users -G wheel,storage,power -s /bin/bash $Username
+
+echo "Create a user password (should be different from root)."
+
+passwd $Username
 
 # File edits for user permissions
 
@@ -23,7 +39,11 @@ hwclock --systohc --utc
 
 # set hostname - edit archdesk with preferred hostname
 
-echo archdesk > /etc/hostname
+echo "Set hostname."
+
+read -r -p "Enter the hostname: " HOSTNAME
+
+echo ${HOSTNAME} > /etc/hostname
 
 # Enable TRIM
 
@@ -43,19 +63,14 @@ echo "title Arch" > /boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 
-echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/sda3) rw" >> /boot/loader/entries/arch.conf
-
-# install dhcpd service
-
-sudo pacman -S dhcpcd --noconfirm --needed
-
-sudo systemctl enable dhcpcd@ADAPTER.service # EDIT "ADAPTER" WITH YOUR ADAPTER IN IP LINK
+echo "options root=PARTUUID=$(blkid -s PARTUUID -o value ${DISK}3) rw" >> /boot/loader/entries/arch.conf
 
 # install NetworkManager
 
 sudo pacman -S networkmanager --noconfirm --needed
+sudo pacman -S git --noconfirm --needed
 sudo systemctl enable NetworkManager.service
-
+sudo systemctl start NetworkManager.service
 
 echo "-------------------------------------------------"
 echo "Arch Linux Installed & Configured. Please [exit] & run [umount -R /mnt] and reboot"
