@@ -1,3 +1,9 @@
+#!/usr/bin/env bash
+chmod +x gnomesetup.sh
+chmod +x kdesetup.sh
+chmod +x software.sh
+chmod +x aur.sh
+
 install_gnome () {
     echo "Setting up GNOME + GDM..."
     sh gnomesetup.sh
