@@ -48,22 +48,22 @@ sgdisk -c 4:"home" $DISK
 # make filesystems
 echo -e "\nCreating Filesystems...\n$HR"
 
-mkfs.fat -F32 -n "boot" $(DISK)1 # FAT32 boot partition
-mkswap -L swap $(DISK)2 # create SWAP
-swapon -L swap # enable SWAP
-mkfs.ext4 -L root $(DISK)3
-mkfs.ext4 -L home $(DISK)4
+mkfs.fat -F32 "$(DISK)1" # FAT32 boot partition
+mkswap "$(DISK)2" # create SWAP
+swapon "$(DISK)2" # enable SWAP
+mkfs.ext4 "$(DISK)3"
+mkfs.ext4 "$(DISK)4"
 
 # mount partitions
 echo "-------------------------------------------------"
 echo "Mounting Partitions"
 echo "-------------------------------------------------"
 
-mount -t ext4 $(DISK)3 /mnt
+mount "$(DISK)3" /mnt
 mkdir /mnt/boot
 mkdir /mnt/home
-mount $(DISK)1 /mnt/boot
-mount $(DISK)4 /mnt/home
+mount "$(DISK)1" /mnt/boot
+mount "$(DISK)4" /mnt/home
 
 # install arch
 echo "-------------------------------------------------"
