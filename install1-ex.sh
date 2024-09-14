@@ -19,7 +19,7 @@ echo "-------------------------------------------------"
 
 echo "Specify drive name for install(ex. /dev/sda, /dev/nvme0n1). THIS WILL FORMAT & PARTITION THE SPECIFIED DRIVE!"
 
-read -r DISK
+read -r -p "Enter the disk: " DISK
 
 echo -e "\nFormatting disk...\n$HR"
 
@@ -47,6 +47,8 @@ sgdisk -c 4:"home" $DISK
 
 # make filesystems
 echo -e "\nCreating Filesystems...\n$HR"
+
+parted $DISK mklabel gpt
 
 mkfs.fat -F32 "$(DISK)1" # FAT32 boot partition
 mkswap "$(DISK)2" # create SWAP
