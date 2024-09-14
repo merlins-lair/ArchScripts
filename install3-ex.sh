@@ -16,8 +16,14 @@ install_software () {
     echo "Software installed."
 }
 
+setup_aur () {
+    echo "Setting up Yay..."
+    sh aur.sh
+    echo "Yay installed."
+}
+
 while true; do
-    options=("Install GNOME + GDM" "Install KDE + SDDM" "Install Software" "Exit")
+    options=("Install GNOME + GDM" "Install KDE + SDDM" "Install Software" "Setup Yay" "Exit")
 
     echo "Debian Server Setup: "
     select opt in "${options[@]}"; do
@@ -25,7 +31,8 @@ while true; do
             1) install_gnome; break ;;
             2) install_kde; break ;;
             3) install_software; break ;;
-            4) break 2 ;;
+            4) setup_aur; break ;;
+            5) break 2 ;;
             *) echo "Invalid" >&2
         esac
     done
