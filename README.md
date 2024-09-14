@@ -12,32 +12,14 @@ Boot into your Arch ISO & run commands:
 
 ```bash
 # Installer 1
-curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/preinstall1.sh -o preinstall1.sh
-sh preinstall1.sh
+curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/install1.sh -o install1.sh
+sh install1.sh
 
 # Enter Arch root directory
 arch-chroot /mnt
 
-# Set your root password
-passwd
-
-# Create your user account, replace USERNAME with your desired username
-useradd -m -g users -G wheel,storage,power -s /bin/bash USERNAME
-
-# Set the password for your account, replace USERNAME with the user you created
-passwd USERNAME
-
-# Run this & take note of your network adapter name (ex: ens33)
-ip link 
-
-# Installer 2 Setup
-sudo pacman -S nano curl --noconfirm --needed
-curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/preinstall2.sh -o preinstall2.sh
-
-# Edit network adapter name for dhcpcd service in script line 43
-nano preinstall2.sh
-
 # Installer 2
+curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/install2.sh -o install2.sh
 sh preinstall2.sh
 
 # Preparing for first boot (Non-Nvidia GPU or VM)
@@ -57,31 +39,14 @@ reboot
 ### After First Boot
 
 ```bash
-sudo pacman -S --noconfirm pacman-contrib git
+sudo pacman -S --noconfirm pacman-contrib
 sudo git clone https://git.merlinslair.net/beech/ArchScripts
 cd ArchScripts
-
-# Normal Install
-sh setup-gnome.sh # GNOME install
-OR
-sh setup-kde.sh # KDE install
+chmod +x install3.sh
+sh install3.sh
 
 reboot
-
-sh software.sh
 ```
-
-### After First Boot (VM)
-
-```bash
-sudo pacman -S --noconfirm pacman-contrib git
-sudo git clone https://git.merlinslair.net/beech/ArchScripts
-cd ArchScripts
-
-# Installed as VM
-sh setup-vmgnome.sh # GNOME install (VM)
-OR
-sh setup-vmkde.sh # KDE install (VM)
 
 # Audio Fix for VMs
 mkdir -p ~/.config/wireplumber/wireplumber.conf.d/
@@ -114,7 +79,7 @@ sh software.sh
 ```
 
 ### System Description
-GNOME or KDE Desktop Enviornment
+GNOME or KDE Desktop Environment 
 
 GDM or SDDM Login Manager
 
