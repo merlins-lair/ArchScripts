@@ -9,9 +9,9 @@ echo "Create a root password (not your user password)."
 
 passwd
 
-echo "Create user account"
+echo "Create a user account."
 
-read Username
+read -r -p "Create username: " Username
 
 useradd -m -g users -G wheel,storage,power -s /bin/bash $Username
 
