@@ -3,9 +3,10 @@
 # Create your user account following the README instructions before running this.
 # Edit hostname on line 26 if desired
 
+lsblk
 echo "Specify drive name that you entered in the first script."
 
-read DISK
+read -r -p "Enter the disk: " DISK
 
 echo "Create a root password (not your user password)."
 
@@ -61,7 +62,7 @@ echo "title Arch" > /boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 
-echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $(DISK)3) rw" >> /boot/loader/entries/arch.conf
+echo "options root=PARTUUID=$(blkid -s PARTUUID -o value ${DISK}3) rw" >> /boot/loader/entries/arch.conf
 
 # install NetworkManager
 
