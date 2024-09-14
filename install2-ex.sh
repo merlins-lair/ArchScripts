@@ -42,7 +42,11 @@ hwclock --systohc --utc
 
 # set hostname - edit archdesk with preferred hostname
 
-echo archdesk > /etc/hostname
+echo "Set hostname."
+
+read -r -p "Enter the hostname: " HOSTNAME
+
+echo ${HOSTNAME} > /etc/hostname
 
 # Enable TRIM
 
@@ -67,8 +71,10 @@ echo "options root=PARTUUID=$(blkid -s PARTUUID -o value ${DISK}3) rw" >> /boot/
 # install NetworkManager
 
 sudo pacman -S networkmanager --noconfirm --needed
+sudo systemctl disable dhcpcd.ervice
+sudo systemctl stop dhcpcd.service
 sudo systemctl enable NetworkManager.service
-
+sudo systemctl start NetworkManager.service
 
 echo "-------------------------------------------------"
 echo "Arch Linux Installed & Configured. Please [exit] & run [umount -R /mnt] and reboot"

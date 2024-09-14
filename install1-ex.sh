@@ -8,7 +8,7 @@ echo "Arch Install Script 1 - Drive Setup"
 echo "-------------------------------------------------"
 
 lsblk
-echo "Specify drive name for install(ex. /dev/sda, /dev/nvme0n1). THIS WILL FORMAT & PARTITION THE SPECIFIED DRIVE!"
+echo "Specify drive name for install (ex. /dev/sda, /dev/nvme0n1). THIS WILL FORMAT & PARTITION THE SPECIFIED DRIVE!"
 
 read -r -p "Enter the disk: " DISK
 
