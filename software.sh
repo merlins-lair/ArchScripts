@@ -19,6 +19,7 @@ PKGS=(
     'zenity'                  # Display graphical dialog boxes via shell scripts
     'zip'                     # Zip compression program
     'nano'                    # Simpler Terminal Editor
+    'kitty'                   # Terminal Emulator
 
     # GENERAL UTILITIES ---------------------------------------------------
 
@@ -28,6 +29,9 @@ PKGS=(
     'spotify'              # Music
     'obs-studio'           # Screen Recording
     'remmina'              # RDP
+    'thunar'               # File Manager
+    'thunar-archive-plugin'
+    'file-roller'
 
     # DEVELOPMENT ---------------------------------------------------------
 
