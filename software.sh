@@ -20,11 +20,11 @@ PKGS=(
     'zip'                     # Zip compression program
     'nano'                    # Simpler Terminal Editor
     'kitty'                   # Terminal Emulator
-    'gwenview'                # Image Viewer
 
     # GENERAL UTILITIES ---------------------------------------------------
 
     'vlc'                  # Video Player
+    'gwenview'             # Image Viewer
     'lutris'               # Gaming
     'wine'                 # Gaming
     'spotify'              # Music
