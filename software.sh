@@ -31,7 +31,7 @@ PKGS=(
     'remmina'              # RDP
     'thunar'               # File Manager
     'thunar-archive-plugin'
-    'file-roller'
+    'ark'
 
     # DEVELOPMENT ---------------------------------------------------------
 
