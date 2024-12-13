@@ -20,6 +20,7 @@ PKGS=(
     'zip'                     # Zip compression program
     'nano'                    # Simpler Terminal Editor
     'kitty'                   # Terminal Emulator
+    'gwenview'                # Image Viewer
 
     # GENERAL UTILITIES ---------------------------------------------------
 
