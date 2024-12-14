@@ -36,7 +36,10 @@ reboot
 ### After First Boot
 
 ```bash
+# Install Pacman Tools
 sudo pacman -S --noconfirm pacman-contrib
+
+# Installer 3
 sudo git clone https://git.merlinslair.net/beech/ArchScripts
 cd ArchScripts
 sh install3.sh
