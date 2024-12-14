@@ -44,6 +44,7 @@ sudo git clone https://git.merlinslair.net/beech/ArchScripts
 cd ArchScripts
 sh install3.sh
 
+# Reboot System
 reboot
 ```
 
