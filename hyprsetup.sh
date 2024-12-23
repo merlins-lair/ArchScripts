@@ -20,7 +20,9 @@ PKGS=(
         'mesa'
 
     # --- Setup Desktop
-        'plasma'                 # Plasma
+        'hyprland'                 # Hyprland
+	'hyprpaper'
+	'waybar'
         'xfce4-power-manager'   # Power Manager 
 
     # --- Login Display Manager
@@ -43,6 +45,7 @@ PKGS=(
         'pavucontrol'       # Pulse Audio volume control
         'pnmixer'           # System tray volume control
 	'wireplumber'       # Controller for pipewire
+
     # --- Bluetooth
         'bluez'                 # Daemons for the bluetooth protocol stack
         'bluez-utils'           # Bluetooth development and debugging utilities

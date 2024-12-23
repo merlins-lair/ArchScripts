@@ -13,7 +13,13 @@ install_gnome () {
 install_kde () {
     echo "Setting up KDE + SDDM..."
     sh kdesetup.sh
-    echo "KDE installed + SDDM enabled on reboot"
+    echo "KDE installed + SDDM enabled on reboot."
+}
+
+install_hyprland () {
+    echo "Setting up Hyprland + SDDM..."
+    sh hyprsetup.sh
+    echo "Hyprland installed + SDDM enabled on reboot."
 }
 
 install_software () {
@@ -29,16 +35,17 @@ setup_aur () {
 }
 
 while true; do
-    options=("Install GNOME + GDM" "Install KDE + SDDM" "Install Software" "Setup Yay" "Exit")
+    options=("Install GNOME + GDM" "Install KDE + SDDM" "Install Hyprland + SDDM" "Install Software" "Setup Yay" "Exit")
 
     echo "Debian Server Setup: "
     select opt in "${options[@]}"; do
         case $REPLY in
             1) install_gnome; break ;;
             2) install_kde; break ;;
-            3) install_software; break ;;
-            4) setup_aur; break ;;
-            5) break 2 ;;
+            3) install_hyprland; break ;;
+            4) install_software; break ;;
+	    5) setup_aur
+            6) break 2 ;;
             *) echo "Invalid" >&2
         esac
     done
