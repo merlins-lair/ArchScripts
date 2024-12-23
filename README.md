@@ -1,6 +1,6 @@
 # Arch Linux Install Scripts
 
-Scripts for Arch install & configuration with GNOME or KDE Plasma, support packages, and apps.
+Scripts for Arch install & configuration with GNOME, KDE Plasma, and Hyprland + support packages and apps.
 
 ---
 
