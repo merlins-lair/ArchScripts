@@ -33,6 +33,7 @@ PKGS=(
     'thunar'               # File Manager
     'thunar-archive-plugin'
     'ark'
+    'tumbler'
 
     # DEVELOPMENT ---------------------------------------------------------
 
