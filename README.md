@@ -17,7 +17,7 @@ sh install1.sh
 
 # Installer 2
 curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/install2.sh -o install2.sh
-sh preinstall2.sh
+sh install2.sh
 
 # Preparing for first boot (Non-Nvidia GPU or VM)
 exit
