@@ -49,9 +49,11 @@ reboot
 ```
 
 ### System Description
-GNOME or KDE Desktop Environment 
+Systemd boot
 
-GDM or SDDM Login Manager
+GNOME or KDE Desktop Environment
+
+SDDM Login Manager
 
 ### Credits
 __[Inspired by ArchTitus](https://github.com/ChrisTitusTech/ArchTitus)__
