@@ -30,6 +30,8 @@ setup_aur () {
 
 setup_nvidia () {
     echo "Setting up Nvidia drivers..."
+    sudo pacman -Syu --noconfirm --needed
+    sudo pacman -S base-devel linux-headers --noconfirm --needed
     sudo pacman -S nvidia nvidia-utils lib32-nvidia-utils nvidia-settings --noconfirm --needed
     sudo sed -i 's/^MODULES=().*/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
     sudo sed -i 's/\(HOOKS=.*\) kms/\1/' /etc/mkinitcpio.conf
