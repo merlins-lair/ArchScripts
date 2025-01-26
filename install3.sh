@@ -5,7 +5,7 @@ chmod +x software.sh
 chmod +x aur.sh
 
 install_gnome () {
-    echo "Setting up GNOME + GDM..."
+    echo "Setting up GNOME + SDDM..."
     sh gnomesetup.sh
     echo "Gnome installed & GDM enabled on reboot."
 }
@@ -29,7 +29,7 @@ setup_aur () {
 }
 
 while true; do
-    options=("Install GNOME + GDM" "Install KDE + SDDM" "Install Software" "Setup Yay" "Exit")
+    options=("Install GNOME + SDDM" "Install KDE + SDDM" "Install Software" "Setup Yay" "Exit")
 
     echo "Debian Server Setup: "
     select opt in "${options[@]}"; do

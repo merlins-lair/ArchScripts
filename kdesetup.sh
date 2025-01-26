@@ -57,7 +57,6 @@ for PKG in "${PKGS[@]}"; do
     sudo pacman -S "$PKG" --noconfirm --needed
 done
 
-sudo systemctl disable gdm.service
 sudo systemctl enable sddm.service 
 
 echo

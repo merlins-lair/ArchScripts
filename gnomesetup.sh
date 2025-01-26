@@ -24,7 +24,7 @@ PKGS=(
         'xfce4-power-manager'   # Power Manager 
 
     # --- Login Display Manager
-        'gdm'                   # Base Login Manager
+        'sddm'                   # Base Login Manager
 
     # --- Networking Setup
         'dialog'                    # Enables shell scripts to trigger dialog boxex
@@ -57,8 +57,7 @@ for PKG in "${PKGS[@]}"; do
     sudo pacman -S "$PKG" --noconfirm --needed
 done
 
-sudo systemctl disable sddm.service
-sudo systemctl enable gdm.service 
+sudo systemctl enable sddm.service 
 
 echo
 echo "Done! Please Reboot & Run software.sh"
