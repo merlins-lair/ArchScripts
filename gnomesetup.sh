@@ -21,7 +21,6 @@ PKGS=(
 
     # --- Setup Desktop
         'gnome'                 # GNOME
-        'xfce4-power-manager'   # Power Manager 
 
     # --- Login Display Manager
         'sddm'                   # Base Login Manager

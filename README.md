@@ -19,13 +19,7 @@ sh install1.sh
 curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/install2.sh -o install2.sh
 sh install2.sh
 
-# Preparing for first boot (Non-Nvidia GPU or VM)
-exit
-umount -R /mnt
-
-# Preparing for first boot (Nvidia GPU) - Follow linked instructions:
-https://github.com/korvahannu/arch-nvidia-drivers-installation-guide
-
+# Preparing for first boot
 exit
 umount -R /mnt
 

@@ -62,9 +62,8 @@ echo "Setting Mirrorlist"
 echo "-------------------------------------------------"
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup # backs up mirrorlist
-sudo pacman -Syyy
-sudo pacman -S pacman-contrib --noconfirm
-rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
+sudo pacman -S pacman-contrib reflector --noconfirm
+sudo reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
 # install arch
 echo "-------------------------------------------------"

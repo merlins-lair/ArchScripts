@@ -43,7 +43,7 @@ setup_nvidia () {
 while true; do
     options=("Install GNOME + SDDM" "Install KDE + SDDM" "Install Software" "Setup Yay" "Setup Nvidia Drivers" "Exit")
 
-    echo "Debian Server Setup: "
+    echo "Desktop & Software Setup: "
     select opt in "${options[@]}"; do
         case $REPLY in
             1) install_gnome; break ;;
