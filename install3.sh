@@ -39,7 +39,7 @@ setup_nvidia () {
     sudo sed -i 's/\(HOOKS=.*\) kms/\1/' /etc/mkinitcpio.conf
     sudo mkinitcpio -P
     sudo mkdir -p /etc/pacman.d/hooks/ && sudo mv nvidia.hook /etc/pacman.d/hooks/
-    sudo sh -c 'echo " nvidia-drm.modeset=1 nvidia_drm.fbdev=1 nvidia-drm.ForceCompositionPipeline=1 nvidia.NVreg_EnableGpuFirmware=0" >> /boot/loader/entries/arch.conf'
+    sudo sed -i '/^options/ s/$/ nvidia-drm.modeset=1 nvidia_drm.fbdev=1 nvidia-drm.ForceCompositionPipeline=1 nvidia.NVreg_EnableGpuFirmware=0/' /boot/loader/entries/arch.conf
     echo "Nvidia driver setup finished."
 }
 
