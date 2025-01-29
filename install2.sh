@@ -69,6 +69,10 @@ echo "options root=PARTUUID=$(blkid -s PARTUUID -o value ${DISK}3) rw" >> /boot/
 
 sudo pacman -S networkmanager --noconfirm --needed
 sudo pacman -S git --noconfirm --needed
+sudo sed -i '/^\#\[multilib\]/s/^#//' /etc/pacman.conf
+sudo sed -i '/^\#Include = \/etc\/pacman.d\/mirrorlist/s/^#//' /etc/pacman.conf
+sudo pacman -Syu --noconfirm --needed
+sudo pacman -S base-devel linux-headers --noconfirm --needed
 sudo systemctl enable NetworkManager.service
 sudo systemctl start NetworkManager.service
 
