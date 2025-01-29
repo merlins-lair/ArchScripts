@@ -20,14 +20,13 @@ PKGS=(
         'mesa'
 
     # --- Setup Desktop
-        'plasma'                 # GNOME
+        'plasma'                 # Plasma
 
     # --- Login Display Manager
         'sddm'                   # Base Login Manager
 
     # --- Networking Setup
         'dialog'                    # Enables shell scripts to trigger dialog boxex
-        'networkmanager'            # Network connection manager
         'network-manager-applet'    # System tray icon/utility for network connectivity
         'dhclient'                  # DHCP client
         'libsecret'                 # Library for storing passwords
