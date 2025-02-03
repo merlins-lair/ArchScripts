@@ -23,7 +23,7 @@ PKGS=(
 
     # GENERAL UTILITIES ---------------------------------------------------
 
-    'vlc'                  # Video Player
+    'mpv'                  # Video Player
     'gwenview'             # Image Viewer
     'lutris'               # Gaming
     'wine'                 # Gaming
