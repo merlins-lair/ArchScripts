@@ -30,6 +30,7 @@ PKGS=(
     'spotify'              # Music
     'obs-studio'           # Screen Recording
     'remmina'              # RDP
+    'discord'              # Messaging
     'thunar'               # File Manager
     'thunar-archive-plugin'
     'ark'
