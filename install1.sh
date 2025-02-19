@@ -62,7 +62,7 @@ echo "Setting Mirrorlist"
 echo "-------------------------------------------------"
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-pacman -S archlinux-keyring --noconfirm
+pacman -Sy archlinux-keyring --noconfirm
 pacman -S pacman-contrib reflector --noconfirm --needed
 reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
