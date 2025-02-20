@@ -2,7 +2,7 @@
 chmod +x gnomesetup.sh
 chmod +x kdesetup.sh
 chmod +x software.sh
-chmod +x aur.sh
+chmod +x qemu.sh
 
 install_gnome () {
     echo "Setting up GNOME + SDDM..."
@@ -22,10 +22,10 @@ install_software () {
     echo "Software installed."
 }
 
-setup_aur () {
-    echo "Setting up Yay..."
-    sh aur.sh
-    echo "Yay installed."
+install_qemu () {
+    echo "Setting up QEMU + Virt Manager..."
+    sh qemu.sh
+    echo "Virt Manager installed."
 }
 
 setup_nvidia () {
@@ -41,7 +41,7 @@ setup_nvidia () {
 }
 
 while true; do
-    options=("Install GNOME + SDDM" "Install KDE + SDDM" "Install Software" "Setup Yay" "Setup Nvidia Drivers" "Exit")
+    options=("Install GNOME" "Install KDE" "Install Software" "Install QEMU + Virt Manager" "Setup Nvidia Drivers" "Exit")
 
     echo "Desktop & Software Setup: "
     select opt in "${options[@]}"; do
@@ -49,7 +49,7 @@ while true; do
             1) install_gnome; break ;;
             2) install_kde; break ;;
             3) install_software; break ;;
-            4) setup_aur; break ;;
+            4) install_qemu; break ;;
             5) setup_nvidia; break ;;
             6) break 2 ;;
             *) echo "Invalid" >&2
