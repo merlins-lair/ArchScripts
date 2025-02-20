@@ -58,7 +58,7 @@ mount ${DISK}4 /mnt/home
 
 # set download mirrors
 echo "-------------------------------------------------"
-echo "Setting Mirrorlist"
+echo "Enabling Parallel Downloads"
 echo "-------------------------------------------------"
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
@@ -66,7 +66,6 @@ pacman -Sy
 pacman -S archlinux-keyring --noconfirm 
 pacman -S pacman-contrib terminus-font --noconfirm --needed 
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
-rankmirrors -n 10 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 # install arch
 echo "-------------------------------------------------"
