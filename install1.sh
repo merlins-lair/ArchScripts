@@ -62,10 +62,11 @@ echo "Enabling Parallel Downloads"
 echo "-------------------------------------------------"
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-pacman -Sy
+pacman -Syy
 pacman -S archlinux-keyring --noconfirm 
-pacman -S pacman-contrib terminus-font --noconfirm --needed 
+pacman -S pacman-contrib rsync reflector terminus-font --noconfirm --needed 
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+reflector -a 48 -c "US" -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
 
 # install arch
 echo "-------------------------------------------------"
@@ -88,4 +89,3 @@ echo "-------------------------------------------------"
 
 # chroot
 arch-chroot /mnt
-
