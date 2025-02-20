@@ -67,7 +67,7 @@ pacman -S archlinux-keyring --noconfirm
 pacman -S pacman-contrib terminus-font --noconfirm --needed 
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 echo "" > /etc/pacman.d/mirrorlist
-pacman -S reflector --noconfirm --needed 
+pacman -S reflector rsync --noconfirm --needed 
 reflector -a 48 -c "US" -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
 
 # install arch
