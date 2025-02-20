@@ -64,7 +64,7 @@ echo "-------------------------------------------------"
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 pacman -Sy archlinux-keyring --noconfirm
 pacman -S pacman-contrib reflector --noconfirm --needed
-reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+reflector --country US --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
 # install arch
 echo "-------------------------------------------------"

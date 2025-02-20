@@ -15,7 +15,7 @@ read -r -p "Create username: " Username
 
 useradd -m -g users -G wheel,storage,power -s /bin/bash $Username
 
-echo "Create a user password (should be different from root)."
+echo "Create a USER password (should be different from root)."
 
 passwd $Username
 
@@ -39,7 +39,7 @@ hwclock --systohc --utc
 
 # set hostname - edit archdesk with preferred hostname
 
-echo "Set hostname."
+echo "Set hostname (name of your PC on the network)."
 
 read -r -p "Enter the hostname: " HOSTNAME
 
