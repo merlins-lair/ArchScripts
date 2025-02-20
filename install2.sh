@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 lsblk
-echo "Specify drive name that you entered in the first script."
+echo "Specify drive name that you entered in the first script (ex. /dev/sda, /dev/nvme0n1)."
 
 read -r -p "Enter the disk: " DISK
 

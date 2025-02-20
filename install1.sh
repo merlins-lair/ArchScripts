@@ -62,9 +62,12 @@ echo "Setting Mirrorlist"
 echo "-------------------------------------------------"
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-pacman -Sy archlinux-keyring --noconfirm
-pacman -S pacman-contrib reflector --noconfirm --needed
-reflector --country US --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+pacman -Sy
+pacman -S archlinux-keyring --noconfirm 
+pacman -S pacman-contrib terminus-font --noconfirm --needed 
+sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+pacman -S reflector --noconfirm --needed 
+reflector -a 48 -c "US" -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
 
 # install arch
 echo "-------------------------------------------------"
