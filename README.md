@@ -15,10 +15,6 @@ Boot into your Arch ISO & run commands:
 curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/install1.sh -o install1.sh
 sh install1.sh
 
-# Installer 2
-curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/install2.sh -o install2.sh
-sh install2.sh
-
 # Preparing for first boot
 exit
 umount -R /mnt

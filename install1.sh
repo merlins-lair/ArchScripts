@@ -10,7 +10,12 @@ echo "-------------------------------------------------"
 lsblk
 echo "Specify drive name for install (ex. /dev/sda, /dev/nvme0n1). THIS WILL FORMAT & PARTITION THE SPECIFIED DRIVE!"
 
-read -r -p "Enter the disk: " DISK
+read -r DISK
+
+if [[ ! -b $DISK ]]; then
+    echo "Error: Disk $DISK does not exist."
+    exit 1
+fi
 
 echo -e "\nFormatting disk...\n$HR"
 
@@ -19,9 +24,10 @@ sgdisk -Z $DISK # zap all on disk
 sgdisk -a 2048 -o $DISK  # new gpt disk 2048 alignment
 
 # create partitions
+read -r -p "Enter the root partition size (e.g., 35G): " ROOT_SIZE
 sgdisk -n 1:0:1024M $DISK  # partition 1 (boot)
 sgdisk -n 2:0:4G $DISK  # partition 2 (SWAP - change to desired size)
-sgdisk -n 3:0:35G $DISK # partition 3 (root - change to desired size)
+sgdisk -n 3:0:$ROOT_SIZE $DISK  # partition 3 (root)
 sgdisk -n 4:0:0 $DISK # partition 4 (home, remaining space)
 
 # set partition types
@@ -56,6 +62,8 @@ mkdir /mnt/home
 mount ${DISK}1 /mnt/boot
 mount ${DISK}4 /mnt/home
 
+cp install2.sh /mnt/
+
 # set download mirrors
 echo "-------------------------------------------------"
 echo "Enabling Parallel Downloads"
@@ -88,4 +96,4 @@ echo "Finished install script 1. Run install2.sh"
 echo "-------------------------------------------------"
 
 # chroot
-arch-chroot /mnt
+arch-chroot /mnt && ./install2.sh
