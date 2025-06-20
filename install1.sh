@@ -95,4 +95,4 @@ echo "Finished install script 1. Run install2.sh"
 echo "-------------------------------------------------"
 
 # chroot
-arch-chroot /mnt && ./install2.sh
+arch-chroot /mnt ./install2.sh
