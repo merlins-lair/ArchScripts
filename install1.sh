@@ -24,10 +24,9 @@ sgdisk -Z $DISK # zap all on disk
 sgdisk -a 2048 -o $DISK  # new gpt disk 2048 alignment
 
 # create partitions
-read -r -p "Enter the root partition size (e.g., 35G): " ROOT_SIZE
 sgdisk -n 1:0:1024M $DISK  # partition 1 (boot)
-sgdisk -n 2:0:4G $DISK  # partition 2 (SWAP - change to desired size)
-sgdisk -n 3:0:$ROOT_SIZE ${DISK}  # partition 3 (root)
+sgdisk -n 2:0:8G $DISK  # partition 2 (SWAP - change to desired size)
+sgdisk -n 3:0:75G $DISK # partition 3 (root - change to desired size)
 sgdisk -n 4:0:0 $DISK # partition 4 (home, remaining space)
 
 # set partition types
