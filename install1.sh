@@ -13,7 +13,7 @@ echo "Specify drive name for install (ex. /dev/sda, /dev/nvme0n1). THIS WILL FOR
 read -r DISK
 
 if [[ ! -b $DISK ]]; then
-    echo "Error: Disk $DISK does not exist."
+    echo "Disk $DISK does not exist."
     exit 1
 fi
 
@@ -27,7 +27,7 @@ sgdisk -a 2048 -o $DISK  # new gpt disk 2048 alignment
 read -r -p "Enter the root partition size (e.g., 35G): " ROOT_SIZE
 sgdisk -n 1:0:1024M $DISK  # partition 1 (boot)
 sgdisk -n 2:0:4G $DISK  # partition 2 (SWAP - change to desired size)
-sgdisk -n 3:0:$ROOT_SIZE $DISK  # partition 3 (root)
+sgdisk -n 3:0:$ROOT_SIZE ${DISK}  # partition 3 (root)
 sgdisk -n 4:0:0 $DISK # partition 4 (home, remaining space)
 
 # set partition types
