@@ -48,6 +48,9 @@ PKGS=(
     'thunar-archive-plugin'
     'ark'
     'tumbler'
+    'gvfs'
+    'gvfs-smb'
+    'samba'
 
     # DEVELOPMENT ---------------------------------------------------------
 
