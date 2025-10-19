@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # This WILL format and partition 1 drive in your system. It is recommended to run the script with only 1 drive installed.
-# Selected drive is /dev/sda, replace sda with specified drive if you have multiple. List drives with 'lsblk'
 # Change boot, SWAP, and root partition sizes to your needs in lines 15-17
 
 echo "-------------------------------------------------"
@@ -29,7 +28,7 @@ sgdisk -n 2:0:8G $DISK  # partition 2 (SWAP - change to desired size)
 sgdisk -n 3:0:75G $DISK # partition 3 (root - change to desired size)
 sgdisk -n 4:0:0 $DISK # partition 4 (home, remaining space)
 
-# set partition types
+# partition types
 sgdisk -t 1:ef00 $DISK 
 sgdisk -t 2:8200 $DISK 
 sgdisk -t 3:8300 $DISK 
@@ -41,7 +40,6 @@ sgdisk -c 2:"swap" $DISK
 sgdisk -c 3:"root" $DISK 
 sgdisk -c 4:"home" $DISK 
 
-# make filesystems
 echo -e "\nCreating Filesystems...\n$HR"
 
 mkfs.fat -F32 ${DISK}1 # FAT32 boot partition
@@ -50,7 +48,6 @@ swapon ${DISK}2 # enable SWAP
 mkfs.ext4 ${DISK}3
 mkfs.ext4 ${DISK}4
 
-# mount partitions
 echo "-------------------------------------------------"
 echo "Mounting Partitions"
 echo "-------------------------------------------------"
@@ -63,7 +60,6 @@ mount ${DISK}4 /mnt/home
 
 cp install2.sh /mnt/
 
-# set download mirrors
 echo "-------------------------------------------------"
 echo "Enabling Parallel Downloads"
 echo "-------------------------------------------------"
@@ -85,8 +81,6 @@ pacstrap -K /mnt base linux linux-firmware base-devel --noconfirm --needed
 echo "-------------------------------------------------"
 echo "Installed - Generating fstab"
 echo "-------------------------------------------------"
-
-# generate fstab
 
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
