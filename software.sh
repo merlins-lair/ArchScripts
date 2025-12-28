@@ -48,6 +48,10 @@ PKGS=(
     'thunar-archive-plugin'
     'ark'
     'tumbler'
+    'libimobiledevice'
+    'usbmuxd'
+    'gvfs-afc'
+    'gvfs-gphoto2'
 
     # DEVELOPMENT ---------------------------------------------------------
 
