@@ -39,6 +39,14 @@ PKGS=(
         'pipewire-pulse'
         'pipewire-alsa'
         'pavucontrol'
+        
+    # --- Bluetooth
+        'bluez'        
+        'bluez-utils'
+        'bluez-libs'
+        'bluez-firmware'
+        'blueberry'
+        'pulseaudio-bluetooth'
 )
 
 for PKG in "${PKGS[@]}"; do

@@ -51,6 +51,11 @@ PKGS=(
     'gvfs'
     'gvfs-smb'
     'samba'
+    'libimobiledevice'
+    'usbmuxd'
+    'gvfs-afc'
+    'gvfs-gphoto2'
+
 
     # Development
 
