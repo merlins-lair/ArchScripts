@@ -23,12 +23,16 @@ sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 echo "Defaults rootpw" >> /etc/sudoers
 
 sudo pacman -S bash-completion --noconfirm --needed
+
+pacman -S reflector --noconfirm --needed 2>/dev/null || true
+reflector -a 48 -c "US" -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist 2>/dev/null || true
+
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 export LANG=en_US.UTF-8
 
-ln -s /usr/share/zoneinfo/America/Chicago > /etc/localtime
+ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
 hwclock --systohc --utc
 
 echo "Set hostname (name of your PC on the network)."
@@ -42,6 +46,10 @@ systemctl enable fstrim.timer
 mount -t efivarfs efivarfs /sys/firmware/efi/efivars/
 
 bootctl install
+
+# Fix boot permissions
+chmod 755 /boot
+chmod 600 /boot/loader/random-seed 2>/dev/null || true
 
 touch /boot/loader/entries/arch.conf
 
@@ -59,6 +67,8 @@ sudo pacman -Syu --noconfirm --needed
 sudo pacman -S base-devel linux-headers --noconfirm --needed
 sudo systemctl enable NetworkManager.service
 sudo systemctl start NetworkManager.service
+
+umount /sys/firmware/efi/efivars/ 2>/dev/null || true
 
 echo "-------------------------------------------------"
 echo "Arch Linux Installed & Configured. Please [exit] & run [umount -R /mnt] and reboot"
