@@ -1,16 +1,26 @@
 #!/usr/bin/env bash
-echo
-echo "Setting up Yay for AUR packages..."
-echo
-echo "Please enter username:"
-read username
-cd "${HOME}"
-git clone "https://aur.archlinux.org/yay.git"
-cd ${HOME}/yay
-makepkg -si
-echo
-echo "Yay setup complete."
-echo
+
+# Yay install
+if ! command -v yay &> /dev/null; then
+    echo
+    echo "Setting up Yay for AUR packages..."
+    echo
+    echo "Please enter username:"
+    read username
+    cd "${HOME}"
+    git clone "https://aur.archlinux.org/yay.git"
+    cd ${HOME}/yay
+    makepkg -si
+    cd "${HOME}"
+    rm -rf "${HOME}/yay"
+    echo
+    echo "Yay setup complete."
+    echo
+else
+    echo
+    echo "Yay already installed, skipping installation."
+    echo
+fi
 echo
 echo "INSTALLING SOFTWARE"
 echo
