@@ -3,7 +3,7 @@
 # Change boot, SWAP, and root partition sizes to your needs in lines 15-17
 
 echo "-------------------------------------------------"
-echo "Arch Install Script 1 - Drive Setup"
+echo "Arch Install Script 1 - Drive Setup. Please CTRL+C and edit the SWAP & ROOT partition sizes before running if you haven't already."
 echo "-------------------------------------------------"
 
 lsblk
