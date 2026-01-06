@@ -64,7 +64,7 @@ setup_nvidia () {
                     rm -rf "${HOME}/yay"
                     echo "Yay installation complete."
                 else
-                    echo "Yay is already installed."
+                    echo "Yay already installed."
                 fi
                 
                 # Install 580xx drivers
