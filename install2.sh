@@ -75,6 +75,17 @@ sudo pacman -S base-devel linux-headers --noconfirm --needed
 sudo systemctl enable NetworkManager.service
 sudo systemctl start NetworkManager.service
 
+echo "-------------------------------------------------"
+echo "Cloning ArchScripts repository"
+echo "-------------------------------------------------"
+if [ -n "$Username" ]; then
+    cd /home/$Username
+    sudo -u $Username git clone https://git.merlinslair.net/beech/ArchScripts.git 2>/dev/null || true
+    echo "ArchScripts repository cloned to /home/$Username/ArchScripts"
+else
+    echo "Username not set, skipping repo clone"
+fi
+
 umount /sys/firmware/efi/efivars/ 2>/dev/null || true
 
 echo "-------------------------------------------------"
