@@ -32,7 +32,18 @@ cat > /etc/pacman.d/mirrorlist << 'EOF'
 ## Generated on install
 ##
 EOF
-reflector -a 48 -c "US" -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
+if reflector -a 48 -c "US" -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist 2>/dev/null; then
+    sed -i -e '/^\[/d' -e '/^#/!{/^Server/!d}' /etc/pacman.d/mirrorlist
+    if ! grep -q "^Server" /etc/pacman.d/mirrorlist; then
+        echo "Warning: reflector produced invalid mirrorlist, restoring backup"
+        cp /etc/pacman.d/mirrorlist.backup /etc/pacman.d/mirrorlist
+        sed -i -e '/^\[/d' -e '/^#/!{/^Server/!d}' /etc/pacman.d/mirrorlist
+    fi
+else
+    echo "Warning: reflector failed, restoring backup mirrorlist"
+    cp /etc/pacman.d/mirrorlist.backup /etc/pacman.d/mirrorlist
+    sed -i -e '/^\[/d' -e '/^#/!{/^Server/!d}' /etc/pacman.d/mirrorlist
+fi
 
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen

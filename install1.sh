@@ -81,9 +81,17 @@ cat > /etc/pacman.d/mirrorlist << 'EOF'
 ## Generated on install
 ##
 EOF
-if ! reflector -a 48 -c "US" -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist || ! grep -q "^Server" /etc/pacman.d/mirrorlist; then
-    echo "Warning: reflector failed or produced empty mirrorlist, restoring backup mirrorlist"
+if reflector -a 48 -c "US" -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist 2>/dev/null; then
+    sed -i -e '/^\[/d' -e '/^#/!{/^Server/!d}' /etc/pacman.d/mirrorlist
+    if ! grep -q "^Server" /etc/pacman.d/mirrorlist; then
+        echo "Warning: reflector produced invalid mirrorlist, restoring backup"
+        cp /etc/pacman.d/mirrorlist.backup /etc/pacman.d/mirrorlist
+        sed -i -e '/^\[/d' -e '/^#/!{/^Server/!d}' /etc/pacman.d/mirrorlist
+    fi
+else
+    echo "Warning: reflector failed, restoring backup mirrorlist"
     cp /etc/pacman.d/mirrorlist.backup /etc/pacman.d/mirrorlist
+    sed -i -e '/^\[/d' -e '/^#/!{/^Server/!d}' /etc/pacman.d/mirrorlist
 fi
 
 # install arch
