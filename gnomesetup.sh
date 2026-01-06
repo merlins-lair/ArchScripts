@@ -5,49 +5,40 @@ echo
 
 PKGS=(
 
-    # --- XORG Display Rendering
-        'xorg'                  # Base Package
-        'xorg-drivers'          # Display Drivers 
-        'xterm'                 # Terminal for TTY
-        'xorg-server'           # XOrg server
-        'xorg-apps'             # XOrg apps group
-        'xorg-xinit'            # XOrg init
-        'xorg-xinput'           # XOrg xinput
-        'xorg-twm'              # XOrg twm
-        'xorg-xclock'           # XOrg xclock
+    # --- XORG
+        'xorg'
+        'xorg-drivers'
+        'xterm'
+        'xorg-server'
+        'xorg-apps'
+        'xorg-xinit'
+        'xorg-xinput'
+        'xorg-twm'
+        'xorg-xclock'
         'xf86-input-vmmouse'
         'xf86-video-vmware'
         'mesa'
+        
+    # --- Desktop
+        'gnome'
 
-    # --- Setup Desktop
-        'gnome'                 # GNOME
+    # --- Login manager
+        'sddm'
 
-    # --- Login Display Manager
-        'sddm'                   # Base Login Manager
-
-    # --- Networking Setup
-        'dialog'                    # Enables shell scripts to trigger dialog boxex
-        'network-manager-applet'    # System tray icon/utility for network connectivity
-        'dhclient'                  # DHCP client
-        'libsecret'                 # Library for storing passwords
-        'fail2ban'                  # Ban IP's after man failed login attempts
-        'ufw'                       # Uncomplicated firewall
+    # --- Networking
+        'dialog'
+        'network-manager-applet'
+        'dhclient'
+        'libsecret'
+        'fail2ban'
+        'ufw'
     
     # --- Audio
-        'alsa-utils'        # Advanced Linux Sound Architecture (ALSA) Components https://alsa.opensrc.org/
-        'alsa-plugins'      # ALSA plugins
-        'pulseaudio'        # Pulse Audio sound components
-        'pulseaudio-alsa'   # ALSA configuration for pulse audio
-        'pavucontrol'       # Pulse Audio volume control
-        'pnmixer'           # System tray volume control
-
-    # --- Bluetooth
-        'bluez'                 # Daemons for the bluetooth protocol stack
-        'bluez-utils'           # Bluetooth development and debugging utilities
-        'bluez-libs'            # Bluetooth libraries
-        'bluez-firmware'        # Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
-        'blueberry'             # Bluetooth configuration tool
-        'pulseaudio-bluetooth'  # Bluetooth support for PulseAudio
+        'pipewire'
+        'wireplumber'
+        'pipewire-pulse'
+        'pipewire-alsa'
+        'pavucontrol'
 )
 
 for PKG in "${PKGS[@]}"; do

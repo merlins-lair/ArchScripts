@@ -11,19 +11,11 @@ This step installs Arch to your hard drive. *IT WILL FORMAT THE DISK*
 Boot into your Arch ISO & run commands:
 
 ```bash
-# Installer 1
+# Installer 1 & 2
 curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/install1.sh -o install1.sh
 sh install1.sh
 
-# Installer 2
-curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/install2.sh -o install2.sh
-sh install2.sh
-
-# Preparing for first boot
-exit
-umount -R /mnt
-
-# Reboot Machine (remove installation media during reboot)
+# Reboot machine when prompted (remove installation media during reboot)
 reboot
 ```
 
@@ -33,8 +25,7 @@ reboot
 # Install Pacman Tools
 sudo pacman -S --noconfirm pacman-contrib
 
-# Installer 3 (Desktop & Nvidia Drivers)
-sudo git clone https://git.merlinslair.net/beech/ArchScripts
+# Installer 3 (Desktop, software & Nvidia Drivers)
 cd ArchScripts
 sh install3.sh
 

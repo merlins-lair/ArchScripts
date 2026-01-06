@@ -1,64 +1,82 @@
 #!/usr/bin/env bash
-echo
-echo "Setting up Yay for AUR packages..."
-echo
-echo "Please enter username:"
-read username
-cd "${HOME}"
-git clone "https://aur.archlinux.org/yay.git"
-cd ${HOME}/yay
-makepkg -si
-echo
-echo "Yay setup complete."
-echo
+
+# Yay install
+if ! command -v yay &> /dev/null; then
+    echo
+    echo "Setting up Yay for AUR packages..."
+    echo
+    echo "Please enter username:"
+    read username
+    cd "${HOME}"
+    git clone "https://aur.archlinux.org/yay.git"
+    cd ${HOME}/yay
+    makepkg -si
+    cd "${HOME}"
+    rm -rf "${HOME}/yay"
+    echo
+    echo "Yay setup complete."
+    echo
+else
+    echo
+    echo "Yay already installed, skipping installation."
+    echo
+fi
 echo
 echo "INSTALLING SOFTWARE"
 echo
 
 PKGS=(
 
-    # TERMINAL UTILITIES --------------------------------------------------
+    # Terminal
 
-    'curl'                    # Remote content retrieval
-    'gufw'                    # Firewall manager
-    'neofetch'                # Shows system info when you launch terminal
-    'numlockx'                # Turns on numlock in X11
-    'p7zip'                   # 7z compression program
-    'unrar'                   # RAR compression program
-    'unzip'                   # Zip compression program
-    'wget'                    # Remote content retrieval
-    'vim'                     # Terminal Editor
-    'zenity'                  # Display graphical dialog boxes via shell scripts
-    'zip'                     # Zip compression program
-    'nano'                    # Simpler Terminal Editor
-    'kitty'                   # Terminal Emulator
+    'curl'
+    'gufw'
+    'neofetch'
+    'numlockx'
+    'p7zip'
+    'unrar'
+    'unzip'
+    'wget'
+    'vim'
+    'zenity'
+    'zip'
+    'nano'
+    'kitty'
 
-    # GENERAL UTILITIES ---------------------------------------------------
+    # General
 
-    'mpv'                  # Video Player
-    'gwenview'             # Image Viewer
-    'lutris'               # Gaming
-    'wine'                 # Gaming
-    'steam'                # Gaming
-    'obs-studio'           # Screen Recording
-    'remmina'              # RDP
-    'discord'              # Messaging
-    'xpdf'                 # PDF viewer
-    'thunar'               # File Manager
+    'mpv'
+    'gwenview'
+    'lutris'
+    'wine'
+    'steam'
+    'obs-studio'
+    'remmina'
+    'discord'
+    'xpdf'
+    'thunar'
     'thunar-archive-plugin'
     'ark'
     'tumbler'
+    'gvfs'
+    'gvfs-smb'
+    'samba'
+    'libimobiledevice'
+    'usbmuxd'
+    'gvfs-afc'
+    'gvfs-gphoto2'
 
-    # DEVELOPMENT ---------------------------------------------------------
 
-    'gedit'                 # Text editor
-    'git'                   # Version control system
-    'nodejs'                # Javascript runtime environment
-    'npm'                   # Node package manager
-    'python'                # Scripting language
-    'yarn'                  # Dependency management (Hyper needs this)
-    'gimp'                  # Photo Editor
-    'kdenlive'              # Video Editor
+    # Development
+
+    'gedit'
+    'git'
+    'nodejs'
+    'npm'
+    'python'
+    'yarn'
+    'gimp'
+    'kdenlive'
 
 )
 
@@ -68,11 +86,11 @@ for PKG in "${PKGS[@]}"; do
 done
 
 AUR_PKGS=(
-    'floorp-bin'            # Floorp browser
-    'brave-bin'             # Brave browser
-    'downgrade'             # Downgrade packages
-    'spotify-edge'          # Spotify
-    'proton-ge-custom-bin'  # Proton GE
+    'floorp-bin'
+    'brave-bin'
+    'downgrade'
+    'spotify-edge'
+    'proton-ge-custom-bin'
 
 )
 
@@ -94,7 +112,7 @@ echo "Installing Flatpak Applications..."
 echo
 
 FLATPAK_APPS=(
-    'org.prismlauncher.PrismLauncher'   # Prism Launcher (Minecraft)
+    'org.prismlauncher.PrismLauncher'
 
 )
 

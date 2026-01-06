@@ -1,42 +1,45 @@
 #!/usr/bin/env bash
 # This WILL format and partition 1 drive in your system. It is recommended to run the script with only 1 drive installed.
-# Selected drive is /dev/sda, replace sda with specified drive if you have multiple. List drives with 'lsblk'
 # Change boot, SWAP, and root partition sizes to your needs in lines 15-17
 
 echo "-------------------------------------------------"
-echo "Arch Install Script 1 - Drive Setup"
+echo "Arch Install Script 1 - Drive Setup. Please CTRL+C and edit the SWAP & ROOT partition sizes before running if you haven't already."
 echo "-------------------------------------------------"
 
 lsblk
 echo "Specify drive name for install (ex. /dev/sda, /dev/nvme0n1). THIS WILL FORMAT & PARTITION THE SPECIFIED DRIVE!"
 
-read -r -p "Enter the disk: " DISK
+read -r DISK
+
+if [[ ! -b $DISK ]]; then
+    echo "Disk $DISK does not exist."
+    exit 1
+fi
 
 echo -e "\nFormatting disk...\n$HR"
 
 # disk prep
-sgdisk -Z $DISK # zap all on disk
-sgdisk -a 2048 -o $DISK  # new gpt disk 2048 alignment
+sgdisk -Z $DISK 2>/dev/null # zap all on disk
+sgdisk -a 2048 -o $DISK 2>/dev/null  # new gpt disk 2048 alignment
 
 # create partitions
-sgdisk -n 1:0:1024M $DISK  # partition 1 (boot)
-sgdisk -n 2:0:4G $DISK  # partition 2 (SWAP - change to desired size)
-sgdisk -n 3:0:35G $DISK # partition 3 (root - change to desired size)
-sgdisk -n 4:0:0 $DISK # partition 4 (home, remaining space)
+sgdisk -n 1:0:1024M $DISK 2>/dev/null  # partition 1 (boot)
+sgdisk -n 2:0:8G $DISK 2>/dev/null  # partition 2 (SWAP - change to desired size)
+sgdisk -n 3:0:75G $DISK 2>/dev/null # partition 3 (root - change to desired size)
+sgdisk -n 4:0:0 $DISK 2>/dev/null # partition 4 (home, remaining space)
 
-# set partition types
-sgdisk -t 1:ef00 $DISK 
-sgdisk -t 2:8200 $DISK 
-sgdisk -t 3:8300 $DISK 
-sgdisk -t 4:8300 $DISK 
+# partition types
+sgdisk -t 1:ef00 $DISK 2>/dev/null
+sgdisk -t 2:8200 $DISK 2>/dev/null
+sgdisk -t 3:8300 $DISK 2>/dev/null
+sgdisk -t 4:8300 $DISK 2>/dev/null
 
 # label partitions
-sgdisk -c 1:"boot" $DISK 
-sgdisk -c 2:"swap" $DISK 
-sgdisk -c 3:"root" $DISK 
-sgdisk -c 4:"home" $DISK 
+sgdisk -c 1:"boot" $DISK 2>/dev/null
+sgdisk -c 2:"swap" $DISK 2>/dev/null
+sgdisk -c 3:"root" $DISK 2>/dev/null
+sgdisk -c 4:"home" $DISK 2>/dev/null 
 
-# make filesystems
 echo -e "\nCreating Filesystems...\n$HR"
 
 mkfs.fat -F32 ${DISK}1 # FAT32 boot partition
@@ -45,7 +48,6 @@ swapon ${DISK}2 # enable SWAP
 mkfs.ext4 ${DISK}3
 mkfs.ext4 ${DISK}4
 
-# mount partitions
 echo "-------------------------------------------------"
 echo "Mounting Partitions"
 echo "-------------------------------------------------"
@@ -56,7 +58,14 @@ mkdir /mnt/home
 mount ${DISK}1 /mnt/boot
 mount ${DISK}4 /mnt/home
 
-# set download mirrors
+echo "-------------------------------------------------"
+echo "Downloading 2nd install script"
+echo "-------------------------------------------------"
+
+curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/install2.sh -o /mnt/install2.sh
+sed -i 's/\r$//' /mnt/install2.sh
+chmod +x /mnt/install2.sh
+
 echo "-------------------------------------------------"
 echo "Enabling Parallel Downloads"
 echo "-------------------------------------------------"
@@ -66,7 +75,24 @@ pacman -Syy
 pacman -S archlinux-keyring --noconfirm 
 pacman -S pacman-contrib rsync reflector terminus-font --noconfirm --needed 
 sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
-reflector -a 48 -c "US" -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
+cat > /etc/pacman.d/mirrorlist << 'EOF'
+##
+## Arch Linux repository mirrorlist
+## Generated on install
+##
+EOF
+if reflector -a 48 -c "US" -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist 2>/dev/null; then
+    sed -i -e '/^\[/d' -e '/^#/!{/^Server/!d}' /etc/pacman.d/mirrorlist
+    if ! grep -q "^Server" /etc/pacman.d/mirrorlist; then
+        echo "Warning: reflector produced invalid mirrorlist, restoring backup"
+        cp /etc/pacman.d/mirrorlist.backup /etc/pacman.d/mirrorlist
+        sed -i -e '/^\[/d' -e '/^#/!{/^Server/!d}' /etc/pacman.d/mirrorlist
+    fi
+else
+    echo "Warning: reflector failed, restoring backup mirrorlist"
+    cp /etc/pacman.d/mirrorlist.backup /etc/pacman.d/mirrorlist
+    sed -i -e '/^\[/d' -e '/^#/!{/^Server/!d}' /etc/pacman.d/mirrorlist
+fi
 
 # install arch
 echo "-------------------------------------------------"
@@ -79,8 +105,6 @@ echo "-------------------------------------------------"
 echo "Installed - Generating fstab"
 echo "-------------------------------------------------"
 
-# generate fstab
-
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 echo "-------------------------------------------------"
@@ -88,4 +112,4 @@ echo "Finished install script 1. Run install2.sh"
 echo "-------------------------------------------------"
 
 # chroot
-arch-chroot /mnt
+arch-chroot /mnt /install2.sh
