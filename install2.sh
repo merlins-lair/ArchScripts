@@ -25,7 +25,14 @@ echo "Defaults rootpw" >> /etc/sudoers
 sudo pacman -S bash-completion --noconfirm --needed
 
 pacman -S reflector --noconfirm --needed 2>/dev/null || true
-reflector -a 48 -c "US" -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist 2>/dev/null || true
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup 2>/dev/null || true
+cat > /etc/pacman.d/mirrorlist << 'EOF'
+##
+## Arch Linux repository mirrorlist
+## Generated on install
+##
+EOF
+reflector -a 48 -c "US" -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
 
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
@@ -71,5 +78,5 @@ sudo systemctl start NetworkManager.service
 umount /sys/firmware/efi/efivars/ 2>/dev/null || true
 
 echo "-------------------------------------------------"
-echo "Arch Linux Installed & Configured. Please [exit] & run [umount -R /mnt] and reboot"
+echo "Arch Linux Installed & Configured. Please reboot"
 echo "-------------------------------------------------"
