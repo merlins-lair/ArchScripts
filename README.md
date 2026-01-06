@@ -26,7 +26,6 @@ reboot
 sudo pacman -S --noconfirm pacman-contrib
 
 # Installer 3 (Desktop, software & Nvidia Drivers)
-sudo git clone https://git.merlinslair.net/beech/ArchScripts
 cd ArchScripts
 sh install3.sh
 
