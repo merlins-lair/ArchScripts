@@ -65,6 +65,7 @@ PKGS=(
     'usbmuxd'
     'gvfs-afc'
     'gvfs-gphoto2'
+    'bitwarden'
 
 
     # Development
