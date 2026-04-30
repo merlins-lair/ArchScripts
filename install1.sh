@@ -62,7 +62,7 @@ echo "-------------------------------------------------"
 echo "Downloading 2nd install script"
 echo "-------------------------------------------------"
 
-curl https://git.merlinslair.net/beech/ArchScripts/raw/branch/main/install2.sh -o /mnt/install2.sh
+curl https://raw.githubusercontent.com/merlins-lair/ArchScripts/refs/heads/main/install2.sh -o /mnt/install2.sh
 sed -i 's/\r$//' /mnt/install2.sh
 chmod +x /mnt/install2.sh
 
