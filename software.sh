@@ -114,6 +114,7 @@ echo
 
 FLATPAK_APPS=(
     'org.prismlauncher.PrismLauncher'
+    'com.github.tchx84.Flatseal'
 
 )
 
