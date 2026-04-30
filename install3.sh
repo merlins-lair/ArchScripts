@@ -7,7 +7,7 @@ chmod +x qemu.sh
 install_gnome () {
     echo "Setting up GNOME + SDDM..."
     sh gnomesetup.sh
-    echo "Gnome installed & GDM enabled on reboot."
+    echo "Gnome installed + SDDM enabled on reboot."
 }
 
 install_kde () {
