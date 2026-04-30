@@ -21,6 +21,7 @@ PKGS=(
 
     # --- Desktop
         'plasma'
+        'kwalletmanager'
 
     # --- Login manager
         'sddm'
